@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TrangchuComponent } from './pages/trangchu/trangchu.component';
 import { XephangComponent } from './pages/xephang/xephang.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DangNhapComponent } from './pages/DangNhap/dang-nhap/dang-nhap.component';
 
 registerLocaleData(en);
 
@@ -21,7 +22,8 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     TrangchuComponent,
-    XephangComponent
+    XephangComponent,
+    DangNhapComponent
   ],
   imports: [
     BrowserModule,
