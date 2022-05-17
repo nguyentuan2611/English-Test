@@ -1,4 +1,4 @@
-<div class="home-container">
+<div class="layout-container">
   <p-menubar>
     <ng-template pTemplate="start">
       <img src="./assets/logo.png" class="logo" [routerLink]="['']">
@@ -6,7 +6,11 @@
 
     <ng-template pTemplate="end">
       <div class="btn btn-outline-primary login-link" [routerLink]="['/login']">
-        <span class="">Đăng nhập</span>
+        <span class="">Login</span>
+      </div>
+      <span class="mx-2 text-primary">|</span>
+      <div class="btn btn-outline-primary login-link" [routerLink]="['/signup']">
+        <span class="">Sign Up</span>
       </div>
     </ng-template>
   </p-menubar>
