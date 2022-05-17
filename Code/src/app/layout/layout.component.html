@@ -1,0 +1,16 @@
+<div class="home-container">
+  <p-menubar>
+    <ng-template pTemplate="start">
+      <img src="./assets/logo.png" class="logo" [routerLink]="['']">
+    </ng-template>
+
+    <ng-template pTemplate="end">
+      <div class="btn btn-outline-primary login-link" [routerLink]="['/login']">
+        <span class="">Đăng nhập</span>
+      </div>
+    </ng-template>
+  </p-menubar>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -10,7 +10,6 @@ export class TrangchuComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
   }
 
 }
