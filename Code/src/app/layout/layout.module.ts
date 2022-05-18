@@ -9,6 +9,8 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { MenubarModule } from 'primeng/menubar';
 import { ButtonModule } from 'primeng/button';
 import { TabViewModule } from 'primeng/tabview';
+import { FieldsetModule } from 'primeng/fieldset';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
 
 import { LayoutRoutingModule } from './layout-routing.module';
 import { TrangchuComponent } from './trangchu/trangchu.component';
@@ -28,6 +30,8 @@ import { TrangchuComponent } from './trangchu/trangchu.component';
     TabViewModule,
     ButtonModule,
     NzTabsModule,
+    FieldsetModule,
+    ScrollPanelModule
 
   ]
 })

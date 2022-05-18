@@ -283,3 +283,4 @@ paket-files/
 
 *.pack
 *.old
+*.json

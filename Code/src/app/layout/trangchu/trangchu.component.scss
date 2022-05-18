@@ -36,8 +36,22 @@
   .rank{
     width: 370px;
     padding: 15px;
-    border: solid 2px black;
-    border-radius: 5px;
-    background: #fff;
+    // border: solid 2px rgb(13, 120, 202);
+    // border-radius: 5px;
+    // background: #fff;
+    .p-fieldset{
+      border: solid 2px rgb(13, 120, 202);
+    }
+    legend{
+      width: auto !important;
+      max-width: 100%;
+      margin: auto;
+      border: none;
+    }
+    .rank-title{
+      text-align: center;
+      font-weight: bold;
+      color: rgb(13, 120, 202);
+    }
   }
 }
