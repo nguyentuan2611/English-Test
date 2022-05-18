@@ -11,9 +11,8 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
         { path: '', component: TrangchuComponent },
-        {
-            path: 'login', component: DangNhapComponent,
-        },
+        { path: 'login', component: DangNhapComponent,},
+        { path: 'signup', component: DangNhapComponent,},
         // {
         //     path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
         // },
