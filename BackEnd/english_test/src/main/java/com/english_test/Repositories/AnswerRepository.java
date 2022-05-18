@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import com.english_test.model.AnswerModel;
 
 public interface AnswerRepository extends JpaRepository<AnswerModel, Long>{
-	@Query(value = "select * from AnswerModel  where id = :id and correctAnswer = :answer " , nativeQuery = true)
-	Boolean checkAnswer(Long id , String answer);
+	@Query(value = "select * from answer  where id = :id and answer_correct = :answer " , nativeQuery = true)
+	AnswerModel checkAnswer(Long id , String answer);
 }
