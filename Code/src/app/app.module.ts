@@ -10,18 +10,20 @@ import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+
+
+
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { TrangchuComponent } from './pages/trangchu/trangchu.component';
-import { XephangComponent } from './pages/xephang/xephang.component';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
     AppComponent,
-    TrangchuComponent,
-    XephangComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,7 @@ registerLocaleData(en);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
