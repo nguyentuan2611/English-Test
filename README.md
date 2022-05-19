@@ -6,4 +6,5 @@ Frameword: Angular , Spring Boot
 - IDE should be support Lombok.jar 
 - Build path lombok "BackEnd/english_test/lib/lombok.jar" on IDE.
 - Create database "database/englishtest.sql".
+- Edit port database coincide your port mysql in file "application.properties"
 - Run project with Spring Boot App.
