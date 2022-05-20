@@ -5,7 +5,6 @@
   background: #67baf2d9;
   background-size: cover;
   background-repeat: no-repeat;
-  position: relative;
   border-radius: 5px;
   height: calc(100vh - 137px);
   display: flex;
@@ -34,10 +33,63 @@
     }
   }
   .rank{
-    width: 370px;
+    width: 400px;
     padding: 15px;
-    border: solid 2px black;
-    border-radius: 5px;
-    background: #fff;
+    // border: solid 2px rgb(13, 120, 202);
+    // border-radius: 5px;
+    // background: #fff;
+    .rank-content{
+      font-size: 2vh;
+      font-weight: bold;
+      .rankNumber{
+        width: 13%;
+        text-align: center;
+        align-self: center;
+        .top1{ height: 3.7vh; }
+        .top2{ height: 3.4vh; }
+        .top3{ height: 3.1vh; }
+      }
+      .rankName{
+        width: 81%;
+        padding: 0 10px;
+        align-self: center;
+      }
+      .rankResult{
+        width: 20%;
+        text-align: right;
+      }
+    }
+    .p-fieldset{
+      max-height: 100%;
+      border: solid 2px rgb(13, 120, 202);
+      .p-fieldset-content{
+        padding: 0 1rem 1rem 1rem;
+      }
+    }
+    legend{
+      width: auto !important;
+      max-width: 100%;
+      margin: auto;
+      border: none;
+    }
+    .p-scrollpanel{
+      width: 100%;
+      height: calc(100vh - 281px);
+      &.custombar1 {
+        .p-scrollpanel-wrapper {
+            border-right: 9px solid var(--layer-1);
+        }
+
+        .p-scrollpanel-bar {
+            background-color: var(--primary-color);
+            opacity: 1;
+            transition: background-color .2s;
+
+            &:hover {
+                background-color: #007ad9;
+            }
+        }
+      }
+    }
   }
 }
