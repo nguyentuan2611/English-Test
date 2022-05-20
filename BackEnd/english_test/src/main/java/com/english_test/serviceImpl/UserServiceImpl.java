@@ -29,4 +29,9 @@ public class UserServiceImpl implements UserService {
 	public UserModel register(UserModel user) {
 		return userRepository.save(user);
 	}
+	
+	@Override
+	public UserModel checkDuplicate(String userName) {
+		return userRepository.checkDuplicate(userName);
+	}
 }

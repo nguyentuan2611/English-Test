@@ -1,6 +1,5 @@
-
-CREATE DATABASE ENGLISHTEST
-USE ENGLISHTEST
+CREATE DATABASE ENGLISHTEST;
+USE ENGLISHTEST;
 
 CREATE TABLE USERS(
 ID integer (3) primary key auto_increment,
@@ -14,7 +13,7 @@ CREATE TABLE RESULT_TEST(
 ID integer (3) primary key auto_increment,
 ID_USER integer (3) not null,
 SCORES float not null,
-DATE_TEST datetime 
+DATE_TEST datetime not null
 );
 
 CREATE TABLE QUESTION(
@@ -24,7 +23,6 @@ OPTION1 text not null,
 OPTION2 text not null,
 OPTION3 text not null,
 OPTION4 text not null,
-CORRECT_ANSWER text not null,
 TYPE_ID text
 );
 
@@ -38,7 +36,12 @@ ID integer (3),
 ANSWER_CORRECT text not null
 );
 
-ALTER TABLE RESULT_TEST ADD COLUMN WORDDAY datetime not null;
+CREATE TABLE BXH(
+ID integer (3),
+SCORES float not null
+);
+
+
 
 INSERT INTO QUESTION (QUESTION, OPTION1, OPTION2, OPTION3, OPTION4) VALUES
 ('What was the matter with him? He........ a toothache.', 'to have', 'have', 'has', 'had' ),
@@ -85,6 +88,24 @@ INSERT INTO ANSWER (ID, ANSWER_CORRECT) VALUES
 ('17', 'with'), ('18', 'do'), ('19', 'goes'), ('20', 'on'), ('21', 'Nurse'), ('22', 'am'), ('23', 'Would'), ('24', 'celebrate'), ('25', 'have'),
 ('26', 'yesterday'), ('27', 'housework'), ('28', 'is not it'), ('29', 'When is'), ('30', 'some');
 
+select * from ANSWER  where ID = 1 and ANSWER_CORRECT = 'had';
 SELECT * FROM ANSWER;
 
+INSERT INTO USERS  ( `USERNAME`, `PASSWORD`, `FULL_NAME`, `EMAIL`) VALUES ( 'Thanh123', '123', 'ThanhNguyen', '');
+INSERT INTO USERS( `USERNAME`, `PASSWORD`, `FULL_NAME`, `EMAIL`) VALUES ( 'Thi123', '123', 'ThiMlo' , 'Thi@email.com');
+INSERT INTO USERS ( `USERNAME`, `PASSWORD`, `FULL_NAME`, `EMAIL`) VALUES ( 'Tuan123', '123', 'TuanNguyen' , 'tuan@email.com');
+SELECT * FROM USERS;
 
+INSERT INTO RESULT_TEST (`ID_USER`, `SCORES`, `DATE_TEST`) VALUES ('3', '9', TIMESTAMP('2022/05/20'));
+INSERT INTO RESULT_TEST (`ID_USER`, `SCORES`, `DATE_TEST`) VALUES ('3', '8', TIMESTAMP('2022/05/20'));
+INSERT INTO RESULT_TEST (`ID_USER`, `SCORES`, `DATE_TEST`) VALUES ('4', '9', TIMESTAMP('2022/05/21'));
+INSERT INTO RESULT_TEST (`ID_USER`, `SCORES`, `DATE_TEST`) VALUES ('4', '10', TIMESTAMP('2022/05/22'));
+INSERT INTO RESULT_TEST (`ID_USER`, `SCORES`, `DATE_TEST`) VALUES ('4', '10', TIMESTAMP('2022/05/20'));
+INSERT INTO RESULT_TEST (`ID_USER`, `SCORES`, `DATE_TEST`) VALUES ('4', '7', TIMESTAMP('2022/05/20'));
+
+select * from result_test; 
+
+INSERT INTO BXH (`ID`, `SCORES`) VALUES (3 , 9);
+INSERT INTO BXH (`ID`, `SCORES`) VALUES (4 , 9);
+
+select * from BXH;

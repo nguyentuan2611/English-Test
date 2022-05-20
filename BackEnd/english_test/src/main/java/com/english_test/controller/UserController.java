@@ -27,7 +27,8 @@ public class UserController {
 		String password = userLogin.getPassword();
 		
 		if(userService.checkLogin(userName, password) != null) {
-			res.setData(userService.checkLogin(userName, password));			
+			res.setData(userService.checkLogin(userName, password));
+			res.setMessage("Login success!");				
 		}
 		else {
 			res.setMessage("UserName or Password is incorrect!");	
@@ -36,20 +37,32 @@ public class UserController {
 	}
 	
 	@GetMapping("/getListUser")
-	public List<UserModel> getListUser(){
-		return userService.getListUser();
+	public CommonRes getListUser(){
+		CommonRes res = new CommonRes();
+		res.setData(userService.getListUser());
+		res.setMessage("Get list user success!");	
+		
+		return res;
 	}
 	
 	@PostMapping("/register")
 	public CommonRes Register(@RequestBody UserLogin userLogin) {
 		CommonRes res = new CommonRes();
+		if(userService.checkDuplicate(userLogin.getUserName()) != null) {
+			res.setMessage("UserName is exists!");
+			res.setResCode("D001");
+		}
+		else {
 		UserModel user = new UserModel();
 		user.setUserName(userLogin.getUserName());
 		user.setPassword(userLogin.getPassword());
 		user.setFullName(userLogin.getFullName());
 		user.setEmail(userLogin.getEmail());
-
+		
 		res.setData(userService.register(user));
+		res.setMessage("Register success!");
+		res.setResCode("S001");
+		}
 		return res;
 	}
 
