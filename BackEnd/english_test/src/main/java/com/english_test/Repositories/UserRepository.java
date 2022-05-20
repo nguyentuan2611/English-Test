@@ -12,5 +12,7 @@ public interface UserRepository extends JpaRepository<UserModel, Long> {
 	@Query(value = "select * from users where username = :username  and password = :password" , nativeQuery = true)
 	UserModel checkLogin(@Param("username") String username , @Param("password") String password);
 
+	@Query(value = "select * from users where username = :username ", nativeQuery = true)
+	UserModel checkDuplicate(@Param("username") String username );
 	
 }

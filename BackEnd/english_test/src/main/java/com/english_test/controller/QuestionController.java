@@ -18,6 +18,7 @@ public class QuestionController {
 	public CommonRes getListQuestion(){
 		CommonRes res = new CommonRes();
 		res.setData( questionService.getListQuestion());
+		res.setMessage("get data sucess!");
 		return res;
 	}
 		

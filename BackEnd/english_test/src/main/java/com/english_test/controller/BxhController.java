@@ -25,12 +25,12 @@ public class BxhController {
 		CommonRes res = new CommonRes();
 		BXHModel userScore = new BXHModel();
 		userScore.setId(obj.getId());
-		userScore.setScore(obj.getScores());
+		userScore.setScore(obj.getScore());
 		
 		//check User exist in BXH 
 		if(bxhService.checkUserExists(obj.getId()) != null) {
 			float oldScores = bxhService.checkUserExists(obj.getId()).getScore();
-			if( oldScores < obj.getScores()) {
+			if( oldScores < obj.getScore()) {
 				bxhService.save(userScore);
 			}
 			res.setData("Update complete!");

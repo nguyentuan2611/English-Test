@@ -7,5 +7,5 @@ import lombok.Setter;
 @Setter
 public class UpdateScores {
 	private Long id;
-	private float scores;
+	private float score;
 }

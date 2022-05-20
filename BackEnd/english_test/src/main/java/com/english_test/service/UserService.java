@@ -10,4 +10,5 @@ public interface UserService {
 	List<UserModel> getListUser();
 	UserModel checkLogin(String userName , String password);
 	UserModel register(UserModel user);
+	UserModel checkDuplicate(String userName);
 }
