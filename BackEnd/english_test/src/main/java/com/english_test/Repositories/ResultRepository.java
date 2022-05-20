@@ -10,7 +10,7 @@ import com.english_test.model.ResultModel;
 
 @Repository
 public interface ResultRepository extends JpaRepository<ResultModel, Long>{
-	@Query(value = "select * from ResultModel GROUP BY userId ORDER BY scores DESC LIMIT 5 " , nativeQuery = true)
+	@Query(value = "select * from result_test GROUP BY id_user ORDER BY scores DESC LIMIT 5 " , nativeQuery = true)
 	List<ResultModel> getBXH();
 }
  

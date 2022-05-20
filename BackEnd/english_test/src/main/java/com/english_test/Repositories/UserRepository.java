@@ -9,7 +9,7 @@ import com.english_test.model.UserModel;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserModel, Long> {
-	@Query(value = "select * from users where username = :username  and passwords = :password" , nativeQuery = true)
+	@Query(value = "select * from users where username = :username  and password = :password" , nativeQuery = true)
 	UserModel checkLogin(@Param("username") String username , @Param("password") String password);
 
 	
