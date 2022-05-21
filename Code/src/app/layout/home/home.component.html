@@ -1,0 +1,44 @@
+<div class="home-container">
+  <div class="introduce">
+    <h2 class="title">Practice your English grammar everyday with EnglishTest</h2>
+    <div class="p-5 flex-fill d-flex flex-column justify-content-center">
+      <div class="small-title">
+        Login and join now!
+      </div>
+      <p-button label="Let go" icon="pi pi-chevron-circle-right" iconPos="right" [routerLink]="['/test']"></p-button>
+    </div>
+  </div>
+  <div class="rank">
+    <p-fieldset legend="Leaderboard">
+        <p-scrollPanel styleClass="custombar1">
+          <div class="rank-content" *ngFor="let item of normalranks; index as i; last as y">
+            <div class="d-flex">
+              <div class="rankNumber">
+                <ng-container *ngIf="i == 0 else top2">
+                  <img src="../../../assets/gold-medal.png" class="top1">
+                </ng-container>
+                <ng-template #top2>
+                  <ng-container *ngIf="i == 1 else top3"> <img src="../../../assets/silver-medal.png" class="top2"> </ng-container>
+                </ng-template>
+                <ng-template #top3>
+                  <ng-container *ngIf="i == 2 else normal"> <img src="../../../assets/medal.png" class="top3"> </ng-container>
+                </ng-template>
+                <ng-template #normal> <p class="normal">{{i+1}}</p> </ng-template>
+              </div>
+              <div class="rankName">
+                <p>{{item.name}}</p>
+              </div>
+              <div class="rankResult">
+                <p>{{item.time}}</p>
+                <p>{{item.correct}}</p>
+              </div>
+            </div>
+            <div *ngIf="!y">
+              <p-divider [style]="{margin: '4px 0 5px 0'}"></p-divider>
+            </div>
+          </div>
+        </p-scrollPanel>
+
+    </p-fieldset>
+  </div>
+</div>
