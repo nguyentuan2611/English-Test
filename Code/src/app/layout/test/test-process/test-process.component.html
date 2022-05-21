@@ -1,5 +1,10 @@
-<nz-spin [nzSpinning]="isSpinning">
-  <div class="h-100">
-    sdfkjvkjxchvkjxc
+<div class="h-100 d-flex flex-column justify-content-center" *ngIf="processBar">
+  <p-progressBar mode="indeterminate" [style]="{'height': '10px', 'margin': '0 100px'}"></p-progressBar>
+</div>
+<div class="h-100" *ngIf="!processBar">
+  <p-tabMenu [model]="questions" [scrollable]="true" [activeItem]="activeItem"></p-tabMenu>
+  <div class="question-container">
+    <router-outlet></router-outlet>
   </div>
-</nz-spin>
+</div>
+

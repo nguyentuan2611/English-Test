@@ -1,23 +1,25 @@
+import { TestProcessComponent } from './test-process/test-process.component';
 import { TestRoutingModule } from './test-routing.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { NzSpinModule } from 'ng-zorro-antd/spin';
+import {TabMenuModule} from 'primeng/tabmenu';
+import {ProgressBarModule} from 'primeng/progressbar';
 
 import { InstructionComponent } from './instruction/instruction.component';
-import { TestProcessComponent } from './test-process/test-process.component';
 
 
 
 @NgModule({
   declarations: [
     InstructionComponent,
-    TestProcessComponent,
+    TestProcessComponent
   ],
   imports: [
     CommonModule,
     TestRoutingModule,
-    NzSpinModule
+    TabMenuModule,
+    ProgressBarModule
   ]
 })
 export class TestModule { }
