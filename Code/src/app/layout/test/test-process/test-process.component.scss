@@ -1,3 +1,15 @@
 .question-container{
+  position: relative;
   height: calc(100% - 70px);
+  .time{
+    position: absolute;
+    right: 0;
+    margin: 10px;
+    color: #00000085;
+    font-weight: bold;
+    font-size: 20px;
+    .timeTitle{
+      text-align: right;
+    }
+  }
 }

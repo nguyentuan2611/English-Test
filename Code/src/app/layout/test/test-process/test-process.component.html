@@ -4,6 +4,10 @@
 <div class="h-100" *ngIf="!processBar">
   <p-tabMenu [model]="questions" [scrollable]="true" [activeItem]="activeItem"></p-tabMenu>
   <div class="question-container">
+    <div class="time">
+      <p class="timeTitle">Time</p>
+      <countdown #cd [config]="countdownConfig"></countdown>
+    </div>
     <router-outlet></router-outlet>
   </div>
 </div>

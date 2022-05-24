@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ErrorComponent } from './error/error.component';
 
 
 registerLocaleData(en);
@@ -24,6 +25,7 @@ registerLocaleData(en);
 @NgModule({
   declarations: [
     AppComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,

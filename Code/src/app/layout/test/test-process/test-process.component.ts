@@ -1,7 +1,8 @@
+import { Router } from '@angular/router';
 import { TestService } from './../../../shared/service/test.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { CountdownComponent } from 'ngx-countdown';
 import { MenuItem } from 'primeng/api';
-import { question } from 'src/app/shared/model/question.model';
 
 @Component({
   selector: 'app-test-process',
@@ -9,17 +10,28 @@ import { question } from 'src/app/shared/model/question.model';
   styleUrls: ['./test-process.component.scss']
 })
 export class TestProcessComponent implements OnInit {
+  @ViewChild('cd', { static: false }) private countdown!: CountdownComponent;
 
-  processBar: boolean = true;
+  processBar: boolean = false;
+  countdownConfig = {
+    leftTime: 30*60,
+    demmand: true,
+    format: 'mm:ss'
+  }
 
   questions: MenuItem[] = [];
   activeItem: MenuItem = {};
 
-  constructor() { }
+  constructor( private testService: TestService,
+                private router: Router) { }
 
   ngOnInit(): void {
 
-    this.questions = Array.from({ length: 30 }, (_, i) => ({ label: `Câu ${i+1}`, routerLink: `test-question/${i+1}`}));
+    this.questions = Array.from({ length: 30 }, (_, i) => ({
+      label: `Quiz ${i+1}`,
+      routerLink: ['test-question', i+1],
+
+    }));
 
     this.activeItem = this.questions[0];
 

@@ -1,6 +1,35 @@
 <div class="question">
-  <!-- <h5 class="font-weight-bold">{{currentQuestion.question}}</h5> -->
+  <h5 *ngIf="currentQuestion" class="font-weight-bold">{{currentQuestion.question}}</h5>
 </div>
 <div class="option">
-
+  <div class="row h-100">
+    <div class="col-8 offset-2 col-md-5 offset-md-0 px-4 py-2">
+      <p-toggleButton
+        [onLabel]="currentQuestion.option1 || ''"
+        [offLabel]="currentQuestion.option1 || ''"
+        [(ngModel)]="op1" (ngModelChange)="onOptionChange(1)">
+      </p-toggleButton>
+    </div>
+    <div class="col-8 offset-2 col-md-5 offset-md-2 px-4 py-2">
+      <p-toggleButton
+        [onLabel]="currentQuestion.option2 || ''"
+        [offLabel]="currentQuestion.option2 || ''"
+        [(ngModel)]="op2" (ngModelChange)="onOptionChange(2)">
+      </p-toggleButton>
+    </div>
+    <div class="col-8 offset-2 col-md-5 offset-md-0 px-4 py-2">
+      <p-toggleButton
+        [onLabel]="currentQuestion.option3 || ''"
+        [offLabel]="currentQuestion.option3 || ''"
+        [(ngModel)]="op3" (ngModelChange)="onOptionChange(3)">
+      </p-toggleButton>
+    </div>
+    <div class="col-8 offset-2 col-md-5 offset-md-2 px-4 py-2">
+      <p-toggleButton
+        [onLabel]="currentQuestion.option4 || ''"
+        [offLabel]="currentQuestion.option4 || ''"
+        [(ngModel)]="op4" (ngModelChange)="onOptionChange(4)">
+      </p-toggleButton>
+    </div>
+  </div>
 </div>

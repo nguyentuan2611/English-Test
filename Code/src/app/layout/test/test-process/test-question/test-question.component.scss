@@ -1,13 +1,16 @@
 .question{
   height: 40%;
   padding: 20px;
-  background: rgba(251, 255, 0, 0.551);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .option{
   height: 60%;
-  padding: 20px;
-  background: rgba(0, 115, 255, 0.352);
+  padding: 20px 40px;
+  .p-button{
+    height: 100%;
+    width: 100%;
+
+  }
 }
