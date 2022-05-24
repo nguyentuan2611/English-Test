@@ -11,5 +11,4 @@ export class DangNhapComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

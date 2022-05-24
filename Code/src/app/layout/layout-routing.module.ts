@@ -1,4 +1,4 @@
-import { TestComponent } from './test/test.component';
+import { DangkyComponent } from './Dangky/dang-ky.component';
 import { DangNhapComponent } from './DangNhap/dang-nhap/dang-nhap.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -13,7 +13,7 @@ const routes: Routes = [
     children: [
         { path: '', component: HomeComponent },
         { path: 'login', component: DangNhapComponent,},
-        { path: 'signup', component: DangNhapComponent,},
+        { path: 'register', component: DangkyComponent,},
         { path: 'test', loadChildren: () => import('./test/test.module').then(m => m.TestModule) },
     ]
   }

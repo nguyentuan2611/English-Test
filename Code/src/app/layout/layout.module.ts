@@ -16,7 +16,7 @@ import {DividerModule} from 'primeng/divider';
 import { LayoutRoutingModule } from './layout-routing.module';
 import { TestComponent } from './test/test.component';
 import { HomeComponent } from './home/home.component';
-
+import { DangkyComponent } from './Dangky/dang-ky.component';
 
 
 @NgModule({
@@ -24,6 +24,7 @@ import { HomeComponent } from './home/home.component';
     LayoutComponent,
     HomeComponent,
     TestComponent,
+    DangkyComponent,
   ],
   imports: [
     CommonModule,
