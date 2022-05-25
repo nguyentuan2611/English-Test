@@ -2,11 +2,19 @@
   <p-progressBar mode="indeterminate" [style]="{'height': '10px', 'margin': '0 100px'}"></p-progressBar>
 </div>
 <div class="h-100" *ngIf="!processBar">
-  <p-tabMenu [model]="questions" [scrollable]="true" [activeItem]="activeItem"></p-tabMenu>
+  <p-tabMenu [model]="tabs" [scrollable]="true" [activeItem]="activeTab"></p-tabMenu>
   <div class="question-container">
     <div class="time">
       <p class="timeTitle">Time</p>
       <countdown #cd [config]="countdownConfig"></countdown>
+    </div>
+    <div class="next-back-btn">
+      <button pButton pRipple type="button" icon="pi pi-caret-left"
+        class="p-button-rounded p-button-outlined" routerLink="test-question/2">
+      </button>
+      <button pButton pRipple type="button" icon="pi pi-caret-right"
+        class="p-button-rounded p-button-outlined" routerLink="test-question/7">
+      </button>
     </div>
     <router-outlet></router-outlet>
   </div>

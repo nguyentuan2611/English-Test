@@ -1,4 +1,7 @@
-import { Router } from '@angular/router';
+import { question } from './../../../shared/model/question.model';
+import { lastValueFrom } from 'rxjs';
+import { TestModuleService } from './../test-module.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { TestService } from './../../../shared/service/test.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CountdownComponent } from 'ngx-countdown';
@@ -12,28 +15,35 @@ import { MenuItem } from 'primeng/api';
 export class TestProcessComponent implements OnInit {
   @ViewChild('cd', { static: false }) private countdown!: CountdownComponent;
 
-  processBar: boolean = false;
+  questions: question[] = [];
+
+  processBar: boolean = true;
   countdownConfig = {
     leftTime: 30*60,
     demmand: true,
     format: 'mm:ss'
   }
 
-  questions: MenuItem[] = [];
-  activeItem: MenuItem = {};
+  tabs: MenuItem[] = [];
+  activeTab: MenuItem = {};
 
-  constructor( private testService: TestService,
-                private router: Router) { }
+  constructor(  private testService: TestService,
+                private testModuleService: TestModuleService,
+                private router: ActivatedRoute) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
 
-    this.questions = Array.from({ length: 30 }, (_, i) => ({
-      label: `Quiz ${i+1}`,
-      routerLink: ['test-question', i+1],
-
+    this.tabs = Array.from({ length: 30 }, (_, i) => ({
+      label: `Quiz ${i+1}`,  skipLocationChange: true,
+      routerLink: `test-question/${i+1}`,
     }));
 
-    this.activeItem = this.questions[0];
+    this.activeTab = this.tabs[0];
+
+    const data: any = await lastValueFrom(this.testService.getQuestions())
+    this.questions = data['data']
+
+    this.testModuleService.updateQuestions(this.questions)
 
     setTimeout(() => {
       this.processBar = false;

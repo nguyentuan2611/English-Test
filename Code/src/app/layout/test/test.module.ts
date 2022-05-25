@@ -10,10 +10,12 @@ import { NzStatisticModule } from 'ng-zorro-antd/statistic';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {ToggleButtonModule} from 'primeng/togglebutton';
+import {ButtonModule} from 'primeng/button';
 
 import { CountdownModule } from 'ngx-countdown';
 
 import { InstructionComponent } from './instruction/instruction.component';
+import { TestModuleService } from './test-module.service';
 
 
 
@@ -32,6 +34,10 @@ import { InstructionComponent } from './instruction/instruction.component';
     CountdownModule,
     ToggleButtonModule,
     FormsModule,
+    ButtonModule,
+  ],
+  providers: [
+    TestModuleService
   ]
 })
 export class TestModule { }

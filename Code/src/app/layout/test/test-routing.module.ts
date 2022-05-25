@@ -15,7 +15,7 @@ const routes: Routes = [
         { path: '', component: InstructionComponent },
         { path: 'test-process', component: TestProcessComponent,
           children: [
-            { path: '', redirectTo: 'test-question/1',  },
+            { path: '', redirectTo: 'test-question/',  },
             { path: 'test-question/:index', component: TestQuestionComponent },
       ] },
     ]

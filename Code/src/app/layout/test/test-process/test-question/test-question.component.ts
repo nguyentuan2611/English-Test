@@ -1,3 +1,4 @@
+import { TestModuleService } from './../../test-module.service';
 import { question } from './../../../../shared/model/question.model';
 import { TestService } from './../../../../shared/service/test.service';
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
@@ -9,9 +10,9 @@ import { lastValueFrom } from 'rxjs';
   templateUrl: './test-question.component.html',
   styleUrls: ['./test-question.component.scss']
 })
-export class TestQuestionComponent implements OnInit, OnChanges {
+export class TestQuestionComponent implements OnInit {
 
-  questionIndex: any;
+  questionIndex: number;
 
   questions: question[] = [];
 
@@ -23,21 +24,19 @@ export class TestQuestionComponent implements OnInit, OnChanges {
   op4: boolean = false;
 
   constructor(private activeRoute: ActivatedRoute,
-              private router:  Router,
-              private testService: TestService) { }
+              private testModuleService: TestModuleService)
+            {this.questionIndex = 0;}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-  }
+  ngOnInit(): void {
+    this.getQuestions();
 
- async ngOnInit() {
+    this.activeRoute.params.subscribe((param)=>{
+      this.questionIndex = param['index']
 
-    this.questionIndex = this.activeRoute.snapshot.params['index']
+      !this.questionIndex ? this.questionIndex = 1 : {}
 
-    await this.getQuestions();
-
-    this.currentQuestion = this.questions[this.questionIndex - 1]
-
+      this.currentQuestion = this.questions[this.questionIndex - 1]
+    })
   }
 
   onOptionChange(num: any){
@@ -49,10 +48,10 @@ export class TestQuestionComponent implements OnInit, OnChanges {
     }
   }
 
-  async getQuestions(){
-    const data: any = await lastValueFrom(this.testService.getQuestions());
-
-    this.questions = data['data'];
+  getQuestions(){
+    this.testModuleService.currentQuestions.subscribe(res=>{
+      this.questions = res
+    })
   }
 
 }

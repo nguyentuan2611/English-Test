@@ -11,5 +11,19 @@
     .timeTitle{
       text-align: right;
     }
+
+  }
+  .next-back-btn{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    top: 40%;
+    .p-button-icon.pi-caret-right{
+      margin-left: 3px;
+    }
+    .p-button-icon.pi-caret-left{
+      margin-right: 3px;
+    }
   }
 }
