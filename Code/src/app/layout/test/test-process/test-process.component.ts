@@ -1,7 +1,7 @@
 import { question } from './../../../shared/model/question.model';
 import { lastValueFrom } from 'rxjs';
 import { TestModuleService } from './../test-module.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { TestService } from './../../../shared/service/test.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CountdownComponent } from 'ngx-countdown';
@@ -26,21 +26,26 @@ export class TestProcessComponent implements OnInit {
 
   tabs: MenuItem[] = [];
   activeTab: MenuItem = {};
+  tabIndex: number = 1;
 
   constructor(  private testService: TestService,
                 private testModuleService: TestModuleService,
-                private router: ActivatedRoute) { }
+                private route: Router) { }
 
   async ngOnInit() {
 
     this.tabs = Array.from({ length: 30 }, (_, i) => ({
       label: `Quiz ${i+1}`,  skipLocationChange: true,
       routerLink: `test-question/${i+1}`,
+      command: (event) => {
+        this.tabIndex = i+1;
+      }
     }));
 
     this.activeTab = this.tabs[0];
 
     const data: any = await lastValueFrom(this.testService.getQuestions())
+
     this.questions = data['data']
 
     this.testModuleService.updateQuestions(this.questions)
@@ -48,6 +53,16 @@ export class TestProcessComponent implements OnInit {
     setTimeout(() => {
       this.processBar = false;
     }, 3000);
+
   }
 
+  nextbackBtnFunction(right: boolean){
+    if(right){
+      this.route.navigate(['test','test-process','test-question',this.tabIndex + 1], { skipLocationChange: true })
+      this.tabIndex += 1
+    }else{
+      this.route.navigate(['test','test-process','test-question',this.tabIndex - 1], { skipLocationChange: true })
+      this.tabIndex -= 1
+    }
+  }
 }

@@ -10,10 +10,10 @@
     </div>
     <div class="next-back-btn">
       <button pButton pRipple type="button" icon="pi pi-caret-left"
-        class="p-button-rounded p-button-outlined" routerLink="test-question/2">
+        class="p-button-rounded p-button-outlined" [disabled]="tabIndex == 1" (click)="nextbackBtnFunction(false)">
       </button>
       <button pButton pRipple type="button" icon="pi pi-caret-right"
-        class="p-button-rounded p-button-outlined" routerLink="test-question/7">
+        class="p-button-rounded p-button-outlined" [disabled]="tabIndex == 30" (click)="nextbackBtnFunction(true)">
       </button>
     </div>
     <router-outlet></router-outlet>

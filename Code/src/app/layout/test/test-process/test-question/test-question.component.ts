@@ -31,12 +31,17 @@ export class TestQuestionComponent implements OnInit {
     this.getQuestions();
 
     this.activeRoute.params.subscribe((param)=>{
+
       this.questionIndex = param['index']
 
       !this.questionIndex ? this.questionIndex = 1 : {}
 
       this.currentQuestion = this.questions[this.questionIndex - 1]
     })
+  }
+
+  getQuestion(){
+
   }
 
   onOptionChange(num: any){
