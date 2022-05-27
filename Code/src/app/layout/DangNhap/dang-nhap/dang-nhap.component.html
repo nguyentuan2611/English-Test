@@ -17,19 +17,19 @@
                 <div class="wrapper-2">
                     <div class="form-title">Login</div>
                     <div class="form">
-                        <form>
+                        <form (submit)="login()">
                             <p class="content-item">
                                 <label>email address
-                                    <input type="text"  placeholder="Email@gmail.com" name="email" required>
+                                    <input type="text" [(ngModel)]="user.userName" name="email" required/>
                                 </label>
                             </p>
 
                             <p class="content-item">
                                 <label>password
-                                    <input type="password" placeholder="********" name="psw" required>
+                                    <input type="password" [(ngModel)]="user.password" name="password" required>
                                 </label>
                             </p>
-                            <button type="submit"  class="signup">Login</button>
+                            <button type="submit" (click)="login()"  class="signup">Login</button>
                         </form>
                     </div>
                 </div>

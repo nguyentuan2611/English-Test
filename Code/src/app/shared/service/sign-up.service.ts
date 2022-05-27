@@ -9,7 +9,20 @@ import { BaseService } from './base.service';
 @Injectable({
   providedIn: 'root'
 })
-export class SignUpService {
+export class SignUpService  extends BaseService {
 
-  constructor() { }
+  private _sharedHeaders = new HttpHeaders();
+  public data = [];
+  constructor(private http: HttpClient) {
+    super();
+    this._sharedHeaders = this._sharedHeaders.set(
+        "Content-Type",
+        "application/json"
+    );
+  }
+
+  signUp(user: user){
+    return this.http.post(`${environment.apiUrl}/register`, user, { headers: this._sharedHeaders })
+    .pipe(catchError(this.handleError));
+  }
 }

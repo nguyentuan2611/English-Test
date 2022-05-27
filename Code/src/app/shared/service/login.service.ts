@@ -10,6 +10,11 @@ import { BaseService } from './base.service';
 })
 export class LoginService extends BaseService {
     private _sharedHeaders = new HttpHeaders();
+    public user = {
+      id : '',
+      username : '',
+      fullName : '',
+    };
     constructor(private http: HttpClient) {
         super();
         this._sharedHeaders = this._sharedHeaders.set(
@@ -21,4 +26,14 @@ export class LoginService extends BaseService {
       return this.http.post(`${environment.apiUrl}/checkLogin`, user, { headers: this._sharedHeaders })
         .pipe(catchError(this.handleError));
     }
+    setUserLogin(user:user){
+      this.user.id = user.id!.toString();
+      this.user.username = user.userName!;
+      this.user.fullName = user.fullName!;
+
+    }
+    getUserLogin(){
+      return this.user;
+    }
 }
+
