@@ -1,5 +1,8 @@
 package com.english_test.model;
 
+import java.sql.Date;
+import java.sql.Time;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,13 +23,16 @@ public class ResultModel {
 	private Long Id;
 	
 	@Column(name = "ID_USER")
-	private String userId;
+	private Long userId;
 	
 	@Column(name = "SCORES")
-	private String scores;
+	private Float scores;
+	
+	@Column(name = "TIMED")
+	private Time time;
 	
 	@Column(name = "DATE_TEST")
-	private String date_test;
+	private Date date_test;
 	
 	
 }

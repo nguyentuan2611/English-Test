@@ -1,11 +1,14 @@
 package com.english_test.model;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class UpdateScores {
+public class CheckAnswer {
 	private Long id;
-	private float score;
+	private List<AnswerUser> listAnswer;
+	private String timed;
 }
