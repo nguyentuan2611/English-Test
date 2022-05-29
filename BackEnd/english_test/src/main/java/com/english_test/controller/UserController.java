@@ -77,20 +77,4 @@ public class UserController {
 		}
 		return res;
 	}
-
-	@GetMapping("/getListResult")
-	public CommonRes getListResult(@RequestBody Long id)  {
-		CommonRes res = new CommonRes();
-		if(resultService.getListById(id) != null) {
-			res.setData(resultService.getListById(id));
-			res.setMessage("Get list result success !");
-			res.setResCode("S001");
-		}
-		else {
-			res.setMessage("List result of User is null !");
-			res.setResCode("F001");
-		}
-		
-		return res;
-	}
 }

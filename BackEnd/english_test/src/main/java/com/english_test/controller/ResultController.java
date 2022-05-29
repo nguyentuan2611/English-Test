@@ -52,8 +52,15 @@ public class ResultController {
 	@PostMapping("/getListResult")
 	public CommonRes getListResult( Long id) {
 		CommonRes res = new  CommonRes();
-		res.setData(resultService.getListById(id));
-		res.setResCode("SUCCESS");
+		if(resultService.getListById(id) != null) {
+			res.setData(resultService.getListById(id));
+			res.setMessage("Get list result success !");
+			res.setResCode("SUCCESS");
+		}
+		else {
+			res.setMessage("List result of User is null !");
+			res.setResCode("FAIL");
+		}
 		return res;
 	}
 }
