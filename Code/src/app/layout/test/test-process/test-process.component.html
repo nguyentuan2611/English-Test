@@ -5,14 +5,13 @@
   <p-tabMenu [model]="tabs" [scrollable]="true" [activeItem]="activeTab"></p-tabMenu>
   <div class="question-container">
     <div class="time">
-      <p class="timeTitle">Time</p>
       <countdown #cd [config]="countdownConfig"></countdown>
     </div>
     <div class="next-back-btn">
-      <button pButton pRipple type="button" icon="pi pi-caret-left"
+      <button pButton pRipple type="button" icon="pi pi-caret-left" title="Previous Quiz"
         class="p-button-rounded p-button-outlined" [disabled]="tabIndex == 1" (click)="nextbackBtnFunction(false)">
       </button>
-      <button pButton pRipple type="button" icon="pi pi-caret-right"
+      <button pButton pRipple type="button" icon="pi pi-caret-right" title="Next Quiz"
         class="p-button-rounded p-button-outlined" [disabled]="tabIndex == 30" (click)="nextbackBtnFunction(true)">
       </button>
     </div>

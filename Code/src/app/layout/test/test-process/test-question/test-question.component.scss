@@ -11,6 +11,11 @@
   .p-button{
     height: 100%;
     width: 100%;
-
+  }
+  .p-ripple.p-element.p-button.p-togglebutton.p-component{
+    box-shadow: rgb(0 0 0 / 15%) 0px -0.25rem 0px 0px inset;
+  }
+  p-toggleButton .p-button-label{
+    font-weight: bold;
   }
 }

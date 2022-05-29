@@ -1,17 +1,19 @@
 .question-container{
   position: relative;
   height: calc(100% - 70px);
+  .p-tabmenu .p-tabmenu-nav .p-tabmenuitem.p-highlight .p-menuitem-link{
+    background: rgb(242 242 241);
+  }
+  .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link:not(.p-disabled):focus{
+    box-shadow: none;
+  }
   .time{
     position: absolute;
     right: 0;
     margin: 10px;
     color: #00000085;
     font-weight: bold;
-    font-size: 20px;
-    .timeTitle{
-      text-align: right;
-    }
-
+    font-size: 26px;
   }
   .next-back-btn{
     position: absolute;
@@ -19,6 +21,9 @@
     display: flex;
     justify-content: space-between;
     top: 40%;
+    .p-button{
+      background: #fff;
+    }
     .p-button-icon.pi-caret-right{
       margin-left: 3px;
     }
