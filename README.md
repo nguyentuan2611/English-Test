@@ -17,7 +17,9 @@ Frameword: Angular , Spring Boot
         "userName": "thanh123",
         "password": "123"
          }
+
 - Get all user:   'rest/getListUser'
+
 - Sign up user: 'rest/register' - POST
         {
 	          "userName": "Thanh12345",
@@ -33,6 +35,7 @@ Frameword: Angular , Spring Boot
 - Get List 30 Question: 'rest/getListQuestion'
 ---------------
 - Get List of answers : 'rest/getListAnswer'
+
 - Check the correct answer:  'rest/checkAnswer' - POST 
               {
               "id": 2,

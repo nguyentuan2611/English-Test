@@ -18,4 +18,5 @@ public interface BxhRepository extends JpaRepository<BXHModel, Long>{
 	@Query(value = "select * from bxh order by scores desc , timed asc limit 10" , nativeQuery = true)
 	List<BXHModel> getListRank();
 	
+	
 }
