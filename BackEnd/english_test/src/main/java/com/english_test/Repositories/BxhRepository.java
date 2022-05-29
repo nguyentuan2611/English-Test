@@ -15,7 +15,7 @@ public interface BxhRepository extends JpaRepository<BXHModel, Long>{
 	@Query(value = "select * from bxh  where id = :id " , nativeQuery = true)
 	BXHModel checkUserExists(@Param("id")Long id );
 	
-	@Query(value = "select * from bxh order by scores desc , timed asc" , nativeQuery = true)
+	@Query(value = "select * from bxh order by scores desc , timed asc limit 10" , nativeQuery = true)
 	List<BXHModel> getListRank();
 	
 }

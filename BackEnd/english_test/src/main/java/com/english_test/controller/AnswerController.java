@@ -66,7 +66,7 @@ public class AnswerController {
 		updateObj.setUserId(answerUser.getId());
 		updateObj.setScores(scores);
 		updateObj.setDate_test(date);
-		SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("mm:ss");
 		try {
 			long ms = sdf.parse(answerUser.getTimed()).getTime();
 			Time t = new Time(ms);
