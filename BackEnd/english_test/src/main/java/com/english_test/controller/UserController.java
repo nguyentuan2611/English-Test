@@ -3,6 +3,7 @@ package com.english_test.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.english_exam.common.CommonRes;
+import com.english_test.model.Authentication;
 import com.english_test.model.UserLogin;
 import com.english_test.model.UserModel;
+import com.english_test.service.ResultService;
 import com.english_test.service.UserService;
 
 @RestController
@@ -19,6 +22,10 @@ import com.english_test.service.UserService;
 public class UserController {
 	@Autowired
 	UserService userService;
+	@Autowired
+	ResultService resultService;
+
+	@CrossOrigin(origins ="http://localhost:4200")
 	
 	@PostMapping("/checkLogin")
 	public CommonRes checkLogin(@RequestBody UserLogin userLogin) {
@@ -28,6 +35,11 @@ public class UserController {
 		
 		if(userService.checkLogin(userName, password) != null) {
 			res.setData(userService.checkLogin(userName, password));
+			Authentication authen = new Authentication(
+					userLogin.getUserName() ,
+					userLogin.getPassword() , 
+					userLogin.getFullName());
+			
 			res.setMessage("Login success!");				
 		}
 		else {
@@ -66,4 +78,19 @@ public class UserController {
 		return res;
 	}
 
+	@GetMapping("/getListResult")
+	public CommonRes getListResult(@RequestBody Long id)  {
+		CommonRes res = new CommonRes();
+		if(resultService.getListById(id) != null) {
+			res.setData(resultService.getListById(id));
+			res.setMessage("Get list result success !");
+			res.setResCode("S001");
+		}
+		else {
+			res.setMessage("List result of User is null !");
+			res.setResCode("F001");
+		}
+		
+		return res;
+	}
 }

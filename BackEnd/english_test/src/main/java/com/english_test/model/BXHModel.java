@@ -1,5 +1,7 @@
 package com.english_test.model;
 
+import java.sql.Time;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,4 +20,7 @@ public class BXHModel {
 	
 	@Column(name = "scores")
 	private float score;
+	
+	@Column(name = "timed")
+	private Time timed;
 }

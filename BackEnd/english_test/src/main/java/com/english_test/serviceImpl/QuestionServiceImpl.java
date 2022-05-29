@@ -18,6 +18,6 @@ public class QuestionServiceImpl implements QuestionService{
 	
 	@Override
 	public List<QuestionsModel> getListQuestion(){
-		return questionRepository.findAll();
+		return questionRepository.getLisQuestion();
 	}
 }

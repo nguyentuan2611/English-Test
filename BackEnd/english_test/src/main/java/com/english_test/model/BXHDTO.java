@@ -1,14 +1,15 @@
 package com.english_test.model;
 
+import java.sql.Time;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class UserLogin {
+public class BXHDTO {
 	private Long id;
-	private String userName;
-	private String password;
 	private String fullName;
-	private String email;
+	private float scores;
+	private Time timed;
 }

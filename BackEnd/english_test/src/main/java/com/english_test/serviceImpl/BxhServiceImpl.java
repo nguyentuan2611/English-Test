@@ -28,7 +28,7 @@ public class BxhServiceImpl implements BxhService{
 	
 	@Override
 	public List<BXHModel> getRank(){
-		return bxhRepository.findAll(Sort.by(Sort.Direction.DESC, "score"));
+		return bxhRepository.getListRank();
 	}
 	
 	
