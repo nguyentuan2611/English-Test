@@ -36,7 +36,7 @@ public class BxhController {
 		userScore.setId(obj.getId());
 		userScore.setScore(obj.getScore());
 		if(obj.getTimed() != "" || obj.getTimed() != null) {
-			SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
+			SimpleDateFormat sdf = new SimpleDateFormat("mm:ss");
 			try {
 				long ms = sdf.parse(obj.getTimed()).getTime();
 				Time t = new Time(ms);
