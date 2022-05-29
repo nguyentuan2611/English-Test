@@ -319,3 +319,10 @@ BackEnd/english_test/lib/lombok/lombok/installer/lombok.svg
 BackEnd/english_test/lib/lombok/lombok/installer/lombokIcon.png
 BackEnd/english_test/lib/lombok/lombok/installer/lombokText.png
 BackEnd/english_test/lib/lombok/lombok/installer/lombokText.svg
+*.class
+*.class
+*.class
+BackEnd/english_test/target/classes/application.properties
+BackEnd/english_test/src/main/resources/application.properties
+BackEnd/english_test/.classpath
+BackEnd/english_test/target/classes/META-INF/maven/com.project/english_test/pom.properties
