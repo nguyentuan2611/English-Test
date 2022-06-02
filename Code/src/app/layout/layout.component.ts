@@ -7,12 +7,15 @@ import { LoginService } from '../shared/service/login.service';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
- public isLogin = false;
+  public isLogin = false;
+  mediaWidth: any;
+
+
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.mediaWidth = window.innerWidth;
   }
-  mediaWidth: any;
+
   constructor(private loginService: LoginService) {
   }
 
@@ -22,6 +25,11 @@ export class LayoutComponent implements OnInit {
     this.checkLogin();
 
   }
+
+  logout(){
+    localStorage.removeItem('token')
+  }
+
   checkLogin(){
     console.log( this.loginService.getUserLogin());
     if(this.loginService.getUserLogin().fullName == ''){

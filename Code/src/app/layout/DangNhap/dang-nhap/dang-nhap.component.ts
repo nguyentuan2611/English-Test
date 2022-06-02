@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService} from '../../../shared/service/login.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { error } from 'console';
 imports: [
   FormsModule
 ]
@@ -21,6 +22,7 @@ export class DangNhapComponent implements OnInit {
   }
 
   public login(){
+    localStorage.setItem('token', 'hihi')
 
     this.loginService.login(this.user).subscribe(res => {
       let dataRes = res as {
@@ -32,10 +34,14 @@ export class DangNhapComponent implements OnInit {
           fullName: string
         }
       }
-      this.loginService.setUserLogin(dataRes.data);
-      console.log(this.loginService.getUserLogin());
-      this.router.navigate(['/']);
-    },err => console.log(err));
 
+      localStorage.setItem('token', dataRes.data.id)
+
+      const token: any = localStorage.getItem('token')
+
+      console.log(token);
+
+
+    },err => console.log(err));
   }
 }

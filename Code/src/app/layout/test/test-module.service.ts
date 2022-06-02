@@ -13,5 +13,10 @@ export class TestModuleService {
 
   updateQuestions(questions: question[]) {
     this.questions.next(questions)
+    // console.log(this.questions);
+  }
+
+  updateAnswer(question: question){
+    this.questions.value.find(f => f.id === question.id)
   }
 }

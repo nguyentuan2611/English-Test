@@ -18,6 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ErrorComponent } from './error/error.component';
+import { AuthGuard } from './auth/auth.guard';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 registerLocaleData(en);
@@ -35,7 +37,7 @@ registerLocaleData(en);
     BrowserAnimationsModule,
     FontAwesomeModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [{ provide: NZ_I18N, useValue: en_US }, JwtHelperService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

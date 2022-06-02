@@ -19,6 +19,7 @@ import { TestComponent } from './test/test.component';
 import { HomeComponent } from './home/home.component';
 import { DangkyComponent } from './Dangky/dang-ky.component';
 import { DangNhapComponent } from './DangNhap/dang-nhap/dang-nhap.component';
+import { AuthGuard } from '../auth/auth.guard';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { DangNhapComponent } from './DangNhap/dang-nhap/dang-nhap.component';
     ScrollPanelModule,
     DividerModule
 
-  ]
+  ],
+  providers: [AuthGuard]
 })
 export class LayoutModule { }

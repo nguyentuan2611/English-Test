@@ -1,14 +1,7 @@
 <div class="layout-container">
   <p-menubar>
     <ng-template pTemplate="start">
-      <!-- <img src="./assets/logo.png" class="logo" [routerLink]="['']"> -->
-      <div>
-        <i>
-          <a href="./">
-            <img src="./assets/logo.png" class="logo" >
-          </a>
-        </i>
-      </div>
+      <img src="./assets/logo.png" class="logo" [routerLink]="['/']">
     </ng-template>
     <ng-template pTemplate="end" ng-show="isLogin = false">
       <!-- [pTemplate]="mediaWidth > 960? 'end' : ''" -->
@@ -19,7 +12,11 @@
       <div class="btn btn-outline-primary login-link" [routerLink]="['/register']">
         <span class="">Sign Up</span>
       </div>
+      <div class="btn btn-outline-primary login-link" (click)="logout()">
+        <span class="">Logout</span>
+      </div>
     </ng-template>
+
   </p-menubar>
   <div class="content">
     <router-outlet></router-outlet>
