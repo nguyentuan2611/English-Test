@@ -54,8 +54,10 @@ export class TestQuestionComponent implements OnInit {
 
   }
 
-  getQuestion(){
-
+  getQuestions(){
+    this.testModuleService.currentQuestions.subscribe(res=>{
+      this.questions = res
+    })
   }
 
   onOptionChange(num: any){
@@ -75,12 +77,11 @@ export class TestQuestionComponent implements OnInit {
               this.op1 = this.op2 = this.op3 = false; break
     }
 
+    this.updateAnswers()
   }
 
-  getQuestions(){
-    this.testModuleService.currentQuestions.subscribe(res=>{
-      this.questions = res
-    })
+  updateAnswers(){
+    this.testModuleService.updateAnswers(this.answers)
   }
 
 }

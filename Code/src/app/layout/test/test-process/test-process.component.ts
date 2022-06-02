@@ -3,17 +3,20 @@ import { lastValueFrom } from 'rxjs';
 import { TestModuleService } from './../test-module.service';
 import { Router } from '@angular/router';
 import { TestService } from './../../../shared/service/test.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { CountdownComponent } from 'ngx-countdown';
+import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { ContentChild } from '@angular/core';
+import { TestQuestionComponent } from './test-question/test-question.component';
 
 @Component({
   selector: 'app-test-process',
   templateUrl: './test-process.component.html',
-  styleUrls: ['./test-process.component.scss']
+  styleUrls: ['./test-process.component.scss'],
+  providers: [TestQuestionComponent]
 })
 export class TestProcessComponent implements OnInit {
-  @ViewChild('cd', { static: false }) private countdown!: CountdownComponent;
+  @ContentChild(TestQuestionComponent)
+  private testques!: TestQuestionComponent;
 
   questions: question[] = [];
 
@@ -54,6 +57,16 @@ export class TestProcessComponent implements OnInit {
       this.processBar = false;
     }, 3000);
 
+  }
+
+  onCountDownEvent(e: any){
+    if(e.action == 'done'){
+      // console.log(this.testques);
+
+      // this.testModuleService.currentAnswers.subscribe(res =>{
+      //   console.log(res);
+      // })
+    }
   }
 
   nextbackBtnFunction(right: boolean){

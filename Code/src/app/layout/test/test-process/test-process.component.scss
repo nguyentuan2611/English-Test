@@ -8,19 +8,36 @@
     box-shadow: none;
   }
   .time{
+    display: flex;
+    flex-direction: column;
+    background: #3498db;
+    border-radius: 5px;
+    padding: 5px;
     position: absolute;
-    right: 0;
+    right: 0%;
+    top: 9%;
     margin: 10px;
-    color: #00000085;
     font-weight: bold;
     font-size: 26px;
+    .count-down{
+      text-align: center;
+      color: #fff;
+    }
+    .btn{
+      font-weight: bold;
+      border: 2px solid #f8f9fa;
+    }
+    .btn-outline-light:focus , .btn-outline-light:hover{
+      background: #f8f9fa;
+      color: #3498db;
+    }
   }
   .next-back-btn{
     position: absolute;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    top: 40%;
+    top: 65%;
     .p-button{
       background: #fff;
     }

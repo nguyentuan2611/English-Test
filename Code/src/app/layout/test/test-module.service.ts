@@ -7,16 +7,17 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class TestModuleService {
   private questions = new BehaviorSubject<question[]>([])
+  private answers = new BehaviorSubject([])
   currentQuestions = this.questions.asObservable();
+  currentAnswers = this.answers.asObservable();
 
   constructor() { }
 
   updateQuestions(questions: question[]) {
     this.questions.next(questions)
-    // console.log(this.questions);
   }
 
-  updateAnswer(question: question){
-    this.questions.value.find(f => f.id === question.id)
+  updateAnswers(answers: any){
+    this.answers.next(answers)
   }
 }

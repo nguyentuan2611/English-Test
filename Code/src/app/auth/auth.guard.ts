@@ -12,8 +12,6 @@ export class AuthGuard implements CanActivate{
 
   canActivate(route: ActivatedRouteSnapshot,
               state: RouterStateSnapshot) {
-                console.log(this.hasToken());
-
     if(!this.hasToken()){
       localStorage.removeItem('token')
       this.router.navigate(['/login'])

@@ -5,7 +5,8 @@
   <p-tabMenu [model]="tabs" [scrollable]="true" [activeItem]="activeTab"></p-tabMenu>
   <div class="question-container">
     <div class="time">
-      <countdown #cd [config]="countdownConfig"></countdown>
+      <countdown #cd [config]="countdownConfig" (event)="onCountDownEvent($event)"></countdown>
+      <button class="btn btn-outline-light">Finish</button>
     </div>
     <div class="next-back-btn">
       <button pButton pRipple type="button" icon="pi pi-caret-left" title="Previous Quiz"
