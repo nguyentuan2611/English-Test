@@ -1,20 +1,18 @@
 import { user } from './../../../shared/model/user.model';
 import { Component, OnInit } from '@angular/core';
 import { LoginService} from '../../../shared/service/login.service';
-import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { error } from 'console';
-imports: [
-  FormsModule
-]
+import { EventEmitter }  from 'events';
+
 @Component({
   selector: 'app-dang-nhap',
   templateUrl: './dang-nhap.component.html',
   styleUrls: ['./dang-nhap.component.scss']
 })
 export class DangNhapComponent implements OnInit {
+  loginEvent = new EventEmitter
   public user: user = new user;
-  constructor(private loginService: LoginService ,private router: Router ) {
+  constructor(private loginService: LoginService ,private route: Router ) {
 
    }
 
@@ -22,8 +20,6 @@ export class DangNhapComponent implements OnInit {
   }
 
   public login(){
-    localStorage.setItem('token', 'hihi')
-
     this.loginService.login(this.user).subscribe(res => {
       let dataRes = res as {
         resCode: string,
@@ -36,10 +32,12 @@ export class DangNhapComponent implements OnInit {
       }
 
       localStorage.setItem('token', dataRes.data.id)
+      localStorage.setItem('fullname', dataRes.data.fullName)
 
-      const token: any = localStorage.getItem('token')
+      this.loginEvent.emit(dataRes.data.fullName);
 
-      console.log(token);
+      this.route.navigate(['/test'])
+
 
 
     },err => console.log(err));

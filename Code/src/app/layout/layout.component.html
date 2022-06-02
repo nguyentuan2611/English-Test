@@ -4,7 +4,10 @@
       <img src="./assets/logo.png" class="logo" [routerLink]="['/']">
     </ng-template>
     <ng-template pTemplate="end" ng-show="isLogin = false">
+      <ng-container *ngIf="isLogin; then logged else notLogin"></ng-container>
       <!-- [pTemplate]="mediaWidth > 960? 'end' : ''" -->
+    </ng-template>
+    <ng-template #notLogin>
       <div class="btn btn-outline-primary login-link" [routerLink]="['/login']">
         <span class="">Login</span>
       </div>
@@ -12,13 +15,18 @@
       <div class="btn btn-outline-primary login-link" [routerLink]="['/register']">
         <span class="">Sign Up</span>
       </div>
-      <div class="btn btn-outline-primary login-link" (click)="logout()">
+    </ng-template>
+    <ng-template #logged>
+      <div class="login-link btn btn-link" >
+        <span class="">Hello, {{fullname}}</span>
+      </div>
+      <span class="mx-2 text-primary">|</span>
+      <div class="login-link btn btn-link" (click)="logout()">
         <span class="">Logout</span>
       </div>
     </ng-template>
-
   </p-menubar>
   <div class="content">
-    <router-outlet></router-outlet>
+    <router-outlet (activate)="checkLogin()"></router-outlet>
   </div>
 </div>

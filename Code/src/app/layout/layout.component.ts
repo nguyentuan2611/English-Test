@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { LoginService } from '../shared/service/login.service';
 
@@ -7,7 +8,8 @@ import { LoginService } from '../shared/service/login.service';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
-  public isLogin = false;
+  isLogin: boolean = false;
+  fullname: string = '';
   mediaWidth: any;
 
 
@@ -16,7 +18,8 @@ export class LayoutComponent implements OnInit {
     this.mediaWidth = window.innerWidth;
   }
 
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: LoginService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -28,18 +31,15 @@ export class LayoutComponent implements OnInit {
 
   logout(){
     localStorage.removeItem('token')
+    this.router.navigate(['/'])
   }
 
   checkLogin(){
-    console.log( this.loginService.getUserLogin());
-    if(this.loginService.getUserLogin().fullName == ''){
-      console.log( 'no user is login ');
-      this.isLogin = false;
-    }
-    else{
-      console.log( ' user is login');
-      this.isLogin = true;
-    }
+    const token = localStorage.getItem('token')
+    const name: any = localStorage.getItem('fullname')
+
+    token ? this.isLogin = true : this.isLogin = false
+    token ? this.fullname = name : {}
   }
 
 }
