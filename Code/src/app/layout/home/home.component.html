@@ -26,11 +26,11 @@
                 <ng-template #normal> <p class="normal">{{i+1}}</p> </ng-template>
               </div>
               <div class="rankName">
-                <p>{{item.name}}</p>
+                <p>{{item.fullName}}</p>
               </div>
               <div class="rankResult">
-                <p>{{item.score}}</p>
-                <p>{{item.time}}</p>
+                <p>{{item.scores}}</p>
+                <p>{{item.timed}}</p>
               </div>
             </div>
             <div *ngIf="!y">

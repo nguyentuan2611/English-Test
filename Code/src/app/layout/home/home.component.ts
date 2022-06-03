@@ -1,3 +1,4 @@
+import { lastValueFrom } from 'rxjs';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { RankingService } from 'src/app/shared/service/ranking.service';
 
@@ -8,38 +9,32 @@ import { RankingService } from 'src/app/shared/service/ranking.service';
 })
 
 export class HomeComponent implements OnInit {
-   score: any []
+   score: any[]
 
   constructor(private rankingservice: RankingService) {
     this.score = []
   }
 
-  ngOnInit(): void {
-    this.getRank();
+  async ngOnInit(){
+    await this.getRank();
+    console.log(this.score);
   }
 
-  getRank () {
-    this.rankingservice.getScore().subscribe(res => {
-      let dataRes = res as {
-        resCode: string,
-        message: string,
-        data: [{
-          id: string,
-          name: string,
-          time: string,
-          score: string
+  async getRank () {
+
+    this.score = []
+
+    const res: any = await lastValueFrom(this.rankingservice.getScore())
+    let dataRes = res as {
+      resCode: string,
+      message: string,
+      data: [{
+        id: string,
+        name: string,
+        time: string,
+        score: string
       }]
     }
-    let score = dataRes.data
-    score.forEach(element => {
-      this.score.push({
-        name: element.name,
-        time: element.time,
-        score: element.score
-      })
-      console.log(this.score)
-    });
-
-    })
+    this.score = dataRes.data
   }
 }
