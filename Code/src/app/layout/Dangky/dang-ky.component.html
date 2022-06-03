@@ -6,30 +6,43 @@
             <div class="wrapper-2">
                 <div class="form-title">Sign up to day!</div>
                 <div class="form">
-                    <form>
-                        <p class="content-item">
+                    <form [formGroup] = "inforUser">
+                        <div class="content-item">
                           <label>full name
-                              <input type="text"  [(ngModel)]="user.fullName" placeholder="Fullname" name="email" required>
+                              <input type="text" name="name" formControlName="fullName" >
                           </label>
-                        </p>
+                          <div *ngIf="!inforUser.controls['fullName'].valid" class="warning">
+                            <small class="form-text">Please Enter FullName</small>
+                          </div>
+                        </div>
 
-                        <p class="content-item">
+                        <div class="content-item">
                             <label>User name
-                                <input type="text"   [(ngModel)]="user.userName" placeholder="User name" name="userName" required>
+                                <input type="text" name="username" formControlName="userName" >
                             </label>
-                        </p>
+                            <div *ngIf="!inforUser.controls['userName'].valid" class="warning">
+                              <small class="form-text">Please Enter UserName</small>
+                          </div>
+                        </div>
 
-                        <p class="content-item">
+                        <div class="content-item">
                           <label>email address
-                              <input type="text"   [(ngModel)]="user.email" placeholder="email address" name="email" required>
+                              <input type="text" name="email" formControlName="email" >
                           </label>
-                        </p>
-                        <p class="content-item">
+                          <div *ngIf="!inforUser.controls['email'].valid" class="warning">
+                              <small class="form-text">Email Not Null</small>
+                          </div>
+                        </div>
+
+                        <div class="content-item">
                             <label>password
-                                <input type="password"  [(ngModel)]="user.password" placeholder="Password" name="password" required>
+                                <input type="password" name="password" formControlName="password" >
                             </label>
-                        </p>
-                        <button type="button"  (click)="signUp()" class="signup">Sign Up</button>
+                            <div *ngIf="!inforUser.controls['password'].valid" class="warning">
+                              <small class="form-text">PassWord Invalid</small>
+                          </div>
+                        </div>
+                        <button type="button" (click)="signUp()" class="signup">Sign Up</button>
                     </form>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 import { LayoutComponent } from './layout.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // ant-lib
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
@@ -39,8 +39,8 @@ import { AuthGuard } from '../auth/auth.guard';
     NzTabsModule,
     FieldsetModule,
     ScrollPanelModule,
-    DividerModule
-
+    DividerModule,
+    ReactiveFormsModule
   ],
   providers: [AuthGuard]
 })

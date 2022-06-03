@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService} from '../../../shared/service/login.service';
 import { Router } from '@angular/router';
 import { EventEmitter }  from 'events';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dang-nhap',
@@ -12,15 +13,21 @@ import { EventEmitter }  from 'events';
 export class DangNhapComponent implements OnInit {
   loginEvent = new EventEmitter
   public user: user = new user;
-  constructor(private loginService: LoginService ,private route: Router ) {
 
-   }
+  inforUser = this.fb.group({
+    "userName": ["",[Validators.required]],
+    "password": ["",[Validators.required, Validators.minLength(6)]]
+  })
+
+  constructor(private loginService: LoginService, private route: Router,  private fb:FormBuilder) {
+  }
 
   ngOnInit(): void {
   }
 
   public login(){
-    this.loginService.login(this.user).subscribe(res => {
+
+    this.loginService.login(this.inforUser.value).subscribe(res => {
       let dataRes = res as {
         resCode: string,
         message: string,
@@ -30,6 +37,8 @@ export class DangNhapComponent implements OnInit {
           fullName: string
         }
       }
+      console.log(dataRes);
+
 
       localStorage.setItem('token', dataRes.data.id)
       localStorage.setItem('fullname', dataRes.data.fullName)
@@ -37,8 +46,6 @@ export class DangNhapComponent implements OnInit {
       this.loginEvent.emit(dataRes.data.fullName);
 
       this.route.navigate(['/test'])
-
-
 
     },err => console.log(err));
   }

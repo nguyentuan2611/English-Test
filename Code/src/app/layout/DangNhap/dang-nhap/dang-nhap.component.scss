@@ -1,26 +1,14 @@
-* {
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif ;
-}
-body{
-  margin: 0;
-  padding:0;
-  background: #e9e9e9;
-}
+
 .content{
   width: 1280px;
   max-width: 100%;
   margin: 0 auto;
 }
 
-
 .shadow-box{
   background: white;
 }
-p{
-  padding: 0;
-  margin: 0;
-}
+
 @media (min-width: 700px) {
   .shadow-box{
       box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
@@ -65,7 +53,7 @@ position: absolute;
   margin: 0 auto;
 }
 .signup-wrapper .company-details .title {
-  padding: 20px;
+  padding: 40px;
   width: 74%;
   margin: 0 auto;
   text-transform: uppercase;
@@ -86,7 +74,7 @@ position: absolute;
 }
 .signup-wrapper .signup-form .form-title{
   font-size: 1.5em;
-  color:  #D60CA7;
+  color:  #0984e3;
   padding: 5px;
   text-align: center;
 
@@ -105,12 +93,11 @@ position: absolute;
   padding-top: 10px;
   padding-bottom: 10px;
   display: block;
-
   text-align: center;
   width: 100%;
 }
 .signup-wrapper .signup-form .signup {
-  background-color: #D60CA7;
+  background-color: #0984e3;
   border: none;
   color: white;
   padding: 15px 25px;
@@ -121,7 +108,7 @@ position: absolute;
 
 }
 .signup-wrapper .signup-form .login{
-  color: #D60CA7;
+  color: #0984e3;
   padding: 20px;
   font-weight: 600;
   text-decoration: none;
@@ -130,8 +117,14 @@ position: absolute;
   margin: 0 auto;
   display: inline-block;
   text-align: center;
-
 }
+
+.signup-form .wrapper-2 .form .content-item .warning {
+  color: red;
+  font-size: 0.8em;
+  margin-top: 10px;
+}
+
 input::placeholder {
   color: #575757;
 }

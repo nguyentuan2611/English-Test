@@ -17,18 +17,24 @@
                 <div class="wrapper-2">
                     <div class="form-title">Login</div>
                     <div class="form">
-                        <form>
-                            <p class="content-item">
-                                <label>email address
-                                    <input type="text" [(ngModel)]="user.userName" name="email" required/>
+                        <form [formGroup] = "inforUser">
+                            <div class="content-item">
+                                <label>UserName
+                                    <input type="text" name="username" formControlName="userName" />
                                 </label>
-                            </p>
+                                <div *ngIf="!inforUser.controls['userName'].valid" class="warning">
+                                  <small class="form-text">Please Enter UserName</small>
+                                </div>
+                            </div>
 
-                            <p class="content-item">
+                            <div class="content-item">
                                 <label>password
-                                    <input type="password" [(ngModel)]="user.password" name="password" required>
+                                    <input type="password" name="password" formControlName="password" />
                                 </label>
-                            </p>
+                                <div *ngIf="!inforUser.controls['password'].valid" class="warning">
+                                  <small class="form-text">Please Enter PassWord</small>
+                                </div>
+                            </div>
                             <button type="submit" (click)="login()"  class="signup">Login</button>
                         </form>
                     </div>
