@@ -3,10 +3,12 @@ import { lastValueFrom } from 'rxjs';
 import { TestModuleService } from './../test-module.service';
 import { Router } from '@angular/router';
 import { TestService } from './../../../shared/service/test.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { ContentChild } from '@angular/core';
 import { TestQuestionComponent } from './test-question/test-question.component';
+import { CountdownComponent } from 'ngx-countdown';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-test-process',
@@ -15,8 +17,8 @@ import { TestQuestionComponent } from './test-question/test-question.component';
   providers: [TestQuestionComponent]
 })
 export class TestProcessComponent implements OnInit {
-  @ContentChild(TestQuestionComponent)
-  private testques!: TestQuestionComponent;
+  @ViewChild(CountdownComponent) private countdown!: CountdownComponent;
+  @ContentChild(TestQuestionComponent) private testques!: TestQuestionComponent;
 
   questions: question[] = [];
 
@@ -33,7 +35,8 @@ export class TestProcessComponent implements OnInit {
 
   constructor(  private testService: TestService,
                 private testModuleService: TestModuleService,
-                private route: Router) { }
+                private route: Router,
+                public datePipe: DatePipe) { }
 
   async ngOnInit() {
 
@@ -60,13 +63,37 @@ export class TestProcessComponent implements OnInit {
   }
 
   onCountDownEvent(e: any){
-    if(e.action == 'done'){
-      // console.log(this.testques);
+    console.log(e);
+    var time: Date = new Date(0,0,0,0,0,0,(30*60*1000 - e.left))
+    console.log(this.datePipe.transform(time, 'mm:ss'));
 
-      // this.testModuleService.currentAnswers.subscribe(res =>{
-      //   console.log(res);
-      // })
+    if(e.action == 'done'){
+      this.testModuleService.currentAnswers.subscribe(res =>{
+        var result = {
+          id: localStorage.getItem('token'),
+          timed: this.datePipe.transform(time, 'mm:ss'),
+          listAnswer: res
+        }
+        console.log(result);
+      })
+    }else if(e.action == 'pause'){
+      this.testModuleService.currentAnswers.subscribe(res =>{
+        var result = {
+          id: localStorage.getItem('token'),
+          timed: this.datePipe.transform(time, 'mm:ss'),
+          listAnswer: res
+        }
+        console.log(result);
+
+      })
     }
+  }
+
+  finishFunction(){
+    this.countdown.pause()
+    // this.testModuleService.currentAnswers.subscribe(res =>{
+    //   console.log(res);
+    // })
   }
 
   nextbackBtnFunction(right: boolean){

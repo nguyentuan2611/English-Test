@@ -6,7 +6,7 @@
   <div class="question-container">
     <div class="time">
       <countdown #cd [config]="countdownConfig" (event)="onCountDownEvent($event)"></countdown>
-      <button class="btn btn-outline-light">Finish</button>
+      <button class="btn btn-outline-light" (click)="finishFunction()">Finish</button>
     </div>
     <div class="next-back-btn">
       <button pButton pRipple type="button" icon="pi pi-caret-left" title="Previous Quiz"

@@ -1,6 +1,6 @@
 import { LayoutComponent } from './layout.component';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // ant-lib
@@ -42,6 +42,6 @@ import { AuthGuard } from '../auth/auth.guard';
     DividerModule,
     ReactiveFormsModule
   ],
-  providers: [AuthGuard]
+  providers: [AuthGuard, DatePipe]
 })
 export class LayoutModule { }
