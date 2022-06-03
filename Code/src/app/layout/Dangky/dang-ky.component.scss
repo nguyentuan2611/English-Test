@@ -22,7 +22,7 @@
 
 .signup-wrapper .company-details:before {
   content: "";
-position: absolute;
+  position: absolute;
   display: block;
   left: 0;
   right: 0;
@@ -54,7 +54,7 @@ position: absolute;
 .signup-wrapper .company-details .title {
   padding: 140px;
   width: 74%;
-  margin: 0 auto;
+  margin: 0px -25px;
   text-transform: uppercase;
   color: #fff;
   font-weight: 600;
