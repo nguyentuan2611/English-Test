@@ -24,7 +24,7 @@ export class TestProcessComponent implements OnInit {
 
   processBar: boolean = true;
   countdownConfig = {
-    leftTime: 30*60,
+    leftTime: 15*60,
     demmand: true,
     format: 'mm:ss'
   }
@@ -63,9 +63,8 @@ export class TestProcessComponent implements OnInit {
   }
 
   onCountDownEvent(e: any){
-    console.log(e);
-    var time: Date = new Date(0,0,0,0,0,0,(30*60*1000 - e.left))
-    console.log(this.datePipe.transform(time, 'mm:ss'));
+
+    var time: Date = new Date(0,0,0,0,0,0,(15*60*1000 - e.left))
 
     if(e.action == 'done'){
       this.testModuleService.currentAnswers.subscribe(res =>{
@@ -74,9 +73,8 @@ export class TestProcessComponent implements OnInit {
           timed: this.datePipe.transform(time, 'mm:ss'),
           listAnswer: res
         }
-        console.log(result);
         this.testService.sendAnswers(result).subscribe(res =>{
-          console.log(res);
+          this.testModuleService.updateResult(res)
         })
     })
     }else if(e.action == 'pause'){
@@ -86,9 +84,8 @@ export class TestProcessComponent implements OnInit {
           timed: this.datePipe.transform(time, 'mm:ss'),
           listAnswer: res
         }
-        console.log(result);
         this.testService.sendAnswers(result).subscribe(res =>{
-          console.log(res);
+          this.testModuleService.updateResult(res)
         })
       })
     }
