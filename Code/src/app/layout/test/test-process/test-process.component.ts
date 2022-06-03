@@ -75,7 +75,10 @@ export class TestProcessComponent implements OnInit {
           listAnswer: res
         }
         console.log(result);
-      })
+        this.testService.sendAnswers(result).subscribe(res =>{
+          console.log(res);
+        })
+    })
     }else if(e.action == 'pause'){
       this.testModuleService.currentAnswers.subscribe(res =>{
         var result = {
@@ -84,7 +87,9 @@ export class TestProcessComponent implements OnInit {
           listAnswer: res
         }
         console.log(result);
-
+        this.testService.sendAnswers(result).subscribe(res =>{
+          console.log(res);
+        })
       })
     }
   }

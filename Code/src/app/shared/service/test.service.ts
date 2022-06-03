@@ -19,8 +19,8 @@ export class TestService extends BaseService {
       );
   }
 
-  sendAnswer(answers: any){
-    return this.http.post(`${environment.apiUrl}/getListQuestion`, { headers: this._sharedHeaders })
+  sendAnswers(answer: any){
+    return this.http.post(`${environment.apiUrl}/checkAnswer`, answer, { headers: this._sharedHeaders })
         .pipe(catchError(this.handleError));
   }
 
