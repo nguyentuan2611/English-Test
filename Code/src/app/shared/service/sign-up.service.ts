@@ -23,6 +23,6 @@ export class SignUpService  extends BaseService {
 
   signUp(user: user){
     return this.http.post(`${environment.apiUrl}/register`, user, { headers: this._sharedHeaders })
-    .pipe(catchError(this.handleError));
+      .pipe(catchError(this.handleError));
   }
 }

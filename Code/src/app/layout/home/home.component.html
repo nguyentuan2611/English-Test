@@ -11,8 +11,8 @@
   <div class="rank">
     <p-fieldset legend="Leaderboard">
         <p-scrollPanel styleClass="custombar1">
-          <div class="rank-content" *ngFor="let item of normalranks; index as i; last as y">
-            <div class="d-flex">
+          <div class="rank-content" *ngFor="let item of score; index as i; last as y">
+            <div class="d-flex" *ngIf="score.length > 0">
               <div class="rankNumber">
                 <ng-container *ngIf="i == 0 else top2">
                   <img src="../../../assets/gold-medal.png" class="top1">
@@ -29,8 +29,8 @@
                 <p>{{item.name}}</p>
               </div>
               <div class="rankResult">
+                <p>{{item.score}}</p>
                 <p>{{item.time}}</p>
-                <p>{{item.correct}}</p>
               </div>
             </div>
             <div *ngIf="!y">

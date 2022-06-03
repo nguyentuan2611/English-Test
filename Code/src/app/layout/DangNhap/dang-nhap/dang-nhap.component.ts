@@ -37,8 +37,6 @@ export class DangNhapComponent implements OnInit {
           fullName: string
         }
       }
-      console.log(dataRes);
-
 
       localStorage.setItem('token', dataRes.data.id)
       localStorage.setItem('fullname', dataRes.data.fullName)
