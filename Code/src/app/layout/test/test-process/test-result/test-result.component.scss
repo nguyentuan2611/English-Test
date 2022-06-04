@@ -1,0 +1,30 @@
+.ant-result-title{
+  font-weight: bold;
+  color: #1890ff;
+}
+.congratulation{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+.test-result{
+  height: 100%;
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #1890ff;
+  font-weight: bold;
+  font-size: 19px;
+  .ant-progress-inner{
+    width: 170px !important;
+    height: 170px !important;
+    font-size: 22px !important;
+  }
+  .row .btn.w-100{
+    height: 50px;
+    font-weight: bold;
+  }
+}

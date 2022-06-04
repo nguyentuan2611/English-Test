@@ -19,7 +19,9 @@ const routes: Routes = [
             { path: '', redirectTo: 'test-question/', canActivate: [AuthGuard]  },
             { path: 'test-question', redirectTo: 'test-question/', canActivate: [AuthGuard]  },
             { path: 'test-question/:index', component: TestQuestionComponent, canActivate: [AuthGuard] },
-      ] },
+          ]
+        },
+
     ]
   }
 ];

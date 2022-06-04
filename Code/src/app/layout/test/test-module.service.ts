@@ -8,10 +8,8 @@ import { BehaviorSubject } from 'rxjs';
 export class TestModuleService {
   private questions = new BehaviorSubject<question[]>([])
   private answers = new BehaviorSubject([])
-  private result = new BehaviorSubject({})
   currentQuestions = this.questions.asObservable();
   currentAnswers = this.answers.asObservable();
-  currentResult = this.result.asObservable();
 
   constructor() { }
 
@@ -21,10 +19,6 @@ export class TestModuleService {
 
   updateAnswers(answers: any){
     this.answers.next(answers)
-  }
-
-  updateResult(result: any) {
-    this.result.next(result)
   }
 
 }

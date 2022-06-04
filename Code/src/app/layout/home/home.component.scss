@@ -4,6 +4,9 @@
   background: #67baf2d9;
   border-radius: 5px;
   height: calc(100vh - 137px);
+  max-height: 608px;
+  min-height: 360px;
+  min-width: 1024px;
   display: flex;
   justify-content: space-around;
   .introduce{
@@ -11,7 +14,7 @@
     flex-direction: column;
     justify-content: space-between;
     background: url(../../../assets/introduce-bg.png);
-    background-size: 50vh;
+    background-size: 50%;
     background-repeat: no-repeat;
     background-position: bottom right;
     width: 790px;
