@@ -31,10 +31,10 @@
       </div>
       <div class="row w-100">
         <div class="col-6">
-          <button class="btn btn-outline-primary w-100"><fa-icon [icon]="backIcon"></fa-icon> Test again</button>
+          <button class="btn btn-outline-primary w-100" [routerLink]="['/test']"><fa-icon [icon]="backIcon"></fa-icon> Test again</button>
         </div>
         <div class="col-4">
-          <button class="btn btn-outline-primary w-100"><fa-icon [icon]="homeIcon"></fa-icon> Home</button>
+          <button class="btn btn-outline-primary w-100" [routerLink]="['/']"><fa-icon [icon]="homeIcon" ></fa-icon> Home</button>
         </div>
         <div class="col-2">
           <button class="btn btn-outline-primary w-100" title="Share your result"><fa-icon [icon]="shareIcon"></fa-icon></button>
