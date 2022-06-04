@@ -19,6 +19,7 @@ import { TestComponent } from './test/test.component';
 import { HomeComponent } from './home/home.component';
 import { DangkyComponent } from './Dangky/dang-ky.component';
 import { DangNhapComponent } from './DangNhap/dang-nhap/dang-nhap.component';
+import { InfoUserComponent } from './info-user/info-user.component';
 import { AuthGuard } from '../auth/auth.guard';
 
 
@@ -28,7 +29,8 @@ import { AuthGuard } from '../auth/auth.guard';
     HomeComponent,
     TestComponent,
     DangkyComponent,
-    DangNhapComponent
+    DangNhapComponent,
+    InfoUserComponent
   ],
   imports: [
     CommonModule,

@@ -26,5 +26,10 @@ export class LoginService extends BaseService {
       return this.http.post(`${environment.apiUrl}/checkLogin`, user, { headers: this._sharedHeaders })
         .pipe(catchError(this.handleError));
     }
+
+    getUserById(id: number){
+      return this.http.post(`${environment.apiUrl}/getUserById?id=${id}`, { headers: this._sharedHeaders })
+    .pipe(catchError(this.handleError));
+    }
 }
 
