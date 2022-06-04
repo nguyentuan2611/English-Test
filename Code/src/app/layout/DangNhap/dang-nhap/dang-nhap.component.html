@@ -35,6 +35,9 @@
                                   <small class="form-text">Please Enter PassWord</small>
                                 </div>
                             </div>
+                            <div class="alert alert-danger message" role="alert" *ngIf="isBoolean == false">
+                              User name or password is invalid!
+                            </div>
                             <button type="submit" (click)="login()"  class="signup">Login</button>
                         </form>
                     </div>

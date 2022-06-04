@@ -18,8 +18,10 @@ export class DangNhapComponent implements OnInit {
     "userName": ["",[Validators.required]],
     "password": ["",[Validators.required, Validators.minLength(6)]]
   })
+  isBoolean ;
 
   constructor(private loginService: LoginService, private route: Router,  private fb:FormBuilder) {
+    this.isBoolean = true;
   }
 
   ngOnInit(): void {
@@ -38,12 +40,17 @@ export class DangNhapComponent implements OnInit {
         }
       }
 
-      localStorage.setItem('token', dataRes.data.id)
+      if(dataRes.resCode == "SUCCESS"){
+        localStorage.setItem('token', dataRes.data.id)
       localStorage.setItem('fullname', dataRes.data.fullName)
 
       this.loginEvent.emit(dataRes.data.fullName);
 
       this.route.navigate(['/test'])
+      }
+      else{
+        this.isBoolean = false;
+      }
 
     },err => console.log(err));
   }

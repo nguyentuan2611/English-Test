@@ -42,6 +42,9 @@
                               <small class="form-text">PassWord Invalid</small>
                           </div>
                         </div>
+                        <div class="alert alert-danger message" role="alert" *ngIf="isBoolean == false">
+                          User name has exists!
+                        </div>
                         <button type="button" (click)="signUp()" class="signup">Sign Up</button>
                     </form>
                 </div>
