@@ -36,7 +36,7 @@ public class AnswerController {
 	@Autowired
 	BxhService bxhService;
 
-	@PostMapping("/checkAnswer")
+	@PostMapping( value = "/checkAnswer" ) 
 	public CommonRes checkAnswer(@RequestBody CheckAnswer answerUser) {
 		CommonRes res = new CommonRes();
 		Long id ;
@@ -58,6 +58,7 @@ public class AnswerController {
 		
 		
 
+		AnswerRespon obj = new AnswerRespon();
 		BXHModel bxh = new BXHModel();
 		ResultModel updateObj = new ResultModel();
 		
@@ -96,18 +97,19 @@ public class AnswerController {
 				check = false;
 			}
 		}
-
+		obj.setNumRank(0);
 		if(check) {
 			bxhService.save(bxh);
+			
+			obj.setNumRank(bxhService.getPositionById(answerUser.getId()));
 		}
-		res.setMessage("Update scores complete!");
-		res.setResCode("SUCCESS");
 		
 		//return RESPONE to client
-		AnswerRespon obj = new AnswerRespon();
 		obj.setNumCorrect(numCorrect);
 		obj.setScores(result);
+		obj.setTime(answerUser.getTimed());
 		res.setData(obj);
+		res.setMessage("Update scores complete!");
 		res.setResCode("SUCCESS");
 		return res;
 	}
