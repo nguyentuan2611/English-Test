@@ -11,4 +11,6 @@ public interface BxhService {
 	BXHModel save(BXHModel obj);
 	
 	List<BXHModel> getRank();
+	
+	int getPositionById(Long id);
 }

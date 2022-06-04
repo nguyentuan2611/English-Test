@@ -8,4 +8,7 @@ import lombok.Setter;
 public class AnswerRespon {
 	private int numCorrect;
 	private String scores;
+	private int numRank;
+	private String time;
+	
 }

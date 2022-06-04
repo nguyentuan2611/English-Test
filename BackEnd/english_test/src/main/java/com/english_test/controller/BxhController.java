@@ -86,7 +86,8 @@ public class BxhController {
 			BXHDTO bxh = new BXHDTO();
 			bxh.setId(list.get(i).getId());
 			bxh.setScores(list.get(i).getScore());
-			bxh.setTimed(list.get(i).getTimed());
+			String time = list.get(i).getTimed().toString();
+			bxh.setTimed(time.substring(3));
 			String fullName = findUserById(list.get(i).getId() , listUser).getFullName();
 			bxh.setFullName(fullName);
 			ls.add(bxh);

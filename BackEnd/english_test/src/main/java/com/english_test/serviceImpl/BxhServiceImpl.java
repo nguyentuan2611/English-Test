@@ -31,5 +31,18 @@ public class BxhServiceImpl implements BxhService{
 		return bxhRepository.getListRank();
 	}
 	
+	@Override
+	public int getPositionById(Long id) {
+		List<BXHModel> ls = bxhRepository.findAll();
+		if(ls.size() >= 0) {
+			for(int i = 0 ; i <= ls.size()  ; i++) {
+				if(ls.get(i).getId() == id) {
+					return i+1;
+				}
+			}
+		}
+		return 0;
+		
+	}
 	
 }
