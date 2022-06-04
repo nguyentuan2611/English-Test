@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit(){
     await this.getRank();
-    console.log(this.score);
   }
 
   async getRank () {

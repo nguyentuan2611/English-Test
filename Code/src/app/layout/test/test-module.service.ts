@@ -21,4 +21,8 @@ export class TestModuleService {
     this.answers.next(answers)
   }
 
+  getAnswers(){
+    return this.currentAnswers
+  }
+
 }

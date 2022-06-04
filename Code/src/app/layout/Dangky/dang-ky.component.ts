@@ -29,7 +29,6 @@ export class DangkyComponent implements OnInit {
   signUp(){
 
     this.inforUser.value;
-    console.log(this.inforUser.value);
     this.signUpService.signUp(this.inforUser.value).subscribe(res => {
       let dataRes = res as {
         resCode: string,

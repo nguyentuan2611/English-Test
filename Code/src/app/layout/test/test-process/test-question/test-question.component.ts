@@ -61,7 +61,6 @@ export class TestQuestionComponent implements OnInit {
   }
 
   onOptionChange(num: any){
-
     var answer = this.answers.find(f => f.id === this.currentQuestion.id)
 
     this.answers = this.answers.filter(arr => arr !== answer)
@@ -76,7 +75,6 @@ export class TestQuestionComponent implements OnInit {
       case 4: this.answers.push({ id: this.currentQuestion.id, answer: this.currentQuestion.option4})
               this.op1 = this.op2 = this.op3 = false; break
     }
-
     this.updateAnswers()
   }
 

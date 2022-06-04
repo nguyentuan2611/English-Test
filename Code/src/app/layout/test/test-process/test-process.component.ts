@@ -21,6 +21,7 @@ export class TestProcessComponent implements OnInit {
   questions: question[] = [];
 
   hasResult: boolean = false;
+  time = new Date
   result: any = {}
 
   processBar: boolean = true;
@@ -65,36 +66,40 @@ export class TestProcessComponent implements OnInit {
 
   }
 
-  onCountDownEvent(e: any){
-
+  async onCountDownEvent(e: any){
     var time: Date = new Date(0,0,0,0,0,0,(15*60*1000 - e.left))
 
     if(e.action == 'done'){
-      this.testModuleService.currentAnswers.subscribe(res =>{
+      var sendAPI: boolean = false
+      this.testModuleService.getAnswers().subscribe(res => {
+        if(sendAPI) return
         var result = {
           id: Number(localStorage.getItem('token')),
           timed: this.datePipe.transform(time, 'mm:ss'),
           listAnswer: res
         }
+        sendAPI = true
         this.loadResult(result)
-
-    })
-    }else if(e.action == 'pause'){
-      this.testModuleService.currentAnswers.subscribe(res =>{
-        var result = {
-          id: Number(localStorage.getItem('token')),
-          timed: this.datePipe.transform(time, 'mm:ss'),
-          listAnswer: res
-        }
-        this.loadResult(result)
-
       })
+      this.testModuleService.updateAnswers({})
+    }else if(e.action == 'stop'){
+      var sendAPI: boolean = false
+      this.testModuleService.getAnswers().subscribe(res => {
+        if(sendAPI) return
+        var result = {
+          id: Number(localStorage.getItem('token')),
+          timed: this.datePipe.transform(time, 'mm:ss'),
+          listAnswer: res
+        }
+        sendAPI = true
+        this.loadResult(result)
+      })
+      this.testModuleService.updateAnswers({})
     }
   }
 
   loadResult(rs: any){
     this.testService.sendAnswers(rs).subscribe(res =>{
-      this.isSpinning = true
       let dataRes = res as {
         data:{ numCorrect: number, numrank: number, scores: string, time: string }
       }
@@ -107,7 +112,7 @@ export class TestProcessComponent implements OnInit {
   }
 
   finishFunction(){
-    this.countdown.pause()
+    this.countdown.stop()
   }
 
   nextbackBtnFunction(right: boolean){
