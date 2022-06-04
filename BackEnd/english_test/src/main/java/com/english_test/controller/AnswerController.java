@@ -1,5 +1,6 @@
 package com.english_test.controller;
 
+import java.io.Console;
 import java.sql.Date;
 import java.sql.Time;
 import java.text.DecimalFormat;
@@ -84,18 +85,22 @@ public class AnswerController {
 		bxh.setId(answerUser.getId());
 		bxh.setScore(scores);
 		////check User exist in BXH 
-		Boolean check = true;
+		Boolean check = false;
 		if(bxhService.checkUserExists(answerUser.getId()) != null) {
 			float oldScores = bxhService.checkUserExists(answerUser.getId()).getScore();
 			Time oldTimed = bxhService.checkUserExists(answerUser.getId()).getTimed();
 			//compare old scores  vs new scores
-			if( scores < oldScores) {
-				check = false;
+			if( scores > oldScores) {
+				check = true;
+			}
+			else if(scores == oldScores){
+				if(bxh.getTimed().before(oldTimed)) {
+					check = true;
+				}
 			}
 			//compare old time vs new time
-			if(bxh.getTimed().after(oldTimed)) {
-				check = false;
-			}
+			System.out.print(bxh.getTimed() + "_" + oldTimed);
+			
 		}
 		obj.setNumRank(0);
 		if(check) {
