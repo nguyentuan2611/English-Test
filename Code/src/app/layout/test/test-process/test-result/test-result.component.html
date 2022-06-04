@@ -1,0 +1,45 @@
+<div class="row h-100">
+  <div class="col-md-5 col-12 h-100">
+    <div class="congratulation">
+      <nz-result  [nzIcon]="this.result.numRank == 0 ? 'star-twotone' : (this.result.numRank == 1) ? 'crown-twotone' : 'trophy-twotone'"
+                  [nzTitle]="resultTitle">
+        <div nz-result-extra>
+
+        </div>
+      </nz-result>
+    </div>
+  </div>
+  <div class="col-md-1 py-5">
+    <p-divider layout="vertical"></p-divider>
+  </div>
+  <div class="col-md-6 col-12 h-100">
+    <div class="test-result">
+      <div class="d-flex w-100 h-50 justify-content-arough">
+        <div class="d-flex justify-content-center align-items-center h-100 w-100">
+          <nz-progress [nzPercent]="correctPercent" nzType="circle" [nzFormat]="processFormat"></nz-progress>
+        </div>
+        <div class="d-flex flex-column justify-content-center align-items-center h-100 w-100">
+          <div class="w-50 d-flex">
+            <span class="w-25"> <fa-icon [icon]="timeIcon"></fa-icon> </span>
+            <span class="ml-2">{{this.result.time}}</span>
+          </div>
+          <div class="w-50 d-flex">
+            <span class="w-25" style="font-size: 24px;"> <fa-icon [icon]="scoreIcon"></fa-icon> </span>
+            <span class="ml-2">{{this.result.scores}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="row w-100">
+        <div class="col-6">
+          <button class="btn btn-outline-primary w-100" [routerLink]="['/test']"><fa-icon [icon]="backIcon"></fa-icon> Test again</button>
+        </div>
+        <div class="col-4">
+          <button class="btn btn-outline-primary w-100" [routerLink]="['/']"><fa-icon [icon]="homeIcon" ></fa-icon> Home</button>
+        </div>
+        <div class="col-2">
+          <button class="btn btn-outline-primary w-100" title="Share your result"><fa-icon [icon]="shareIcon"></fa-icon></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

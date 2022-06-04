@@ -1,7 +1,5 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
-import { JwtHelperService } from "@auth0/angular-jwt";
-import { Observable } from "rxjs";
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from "@angular/router";
 
 
 @Injectable({
@@ -12,6 +10,7 @@ export class AuthGuard implements CanActivate{
 
   canActivate(route: ActivatedRouteSnapshot,
               state: RouterStateSnapshot) {
+
     if(!this.hasToken()){
       localStorage.removeItem('token')
       this.router.navigate(['/login'])

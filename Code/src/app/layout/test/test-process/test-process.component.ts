@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { TestService } from './../../../shared/service/test.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { ContentChild } from '@angular/core';
 import { TestQuestionComponent } from './test-question/test-question.component';
 import { CountdownComponent } from 'ngx-countdown';
 import { DatePipe } from '@angular/common';
@@ -18,11 +17,15 @@ import { DatePipe } from '@angular/common';
 })
 export class TestProcessComponent implements OnInit {
   @ViewChild(CountdownComponent) private countdown!: CountdownComponent;
-  @ContentChild(TestQuestionComponent) private testques!: TestQuestionComponent;
 
   questions: question[] = [];
 
+  hasResult: boolean = false;
+  result: any = {}
+
   processBar: boolean = true;
+  isSpinning: boolean = false;
+
   countdownConfig = {
     leftTime: 15*60,
     demmand: true,
@@ -69,33 +72,42 @@ export class TestProcessComponent implements OnInit {
     if(e.action == 'done'){
       this.testModuleService.currentAnswers.subscribe(res =>{
         var result = {
-          id: localStorage.getItem('token'),
+          id: Number(localStorage.getItem('token')),
           timed: this.datePipe.transform(time, 'mm:ss'),
           listAnswer: res
         }
-        this.testService.sendAnswers(result).subscribe(res =>{
-          this.testModuleService.updateResult(res)
-        })
+        this.loadResult(result)
+
     })
     }else if(e.action == 'pause'){
       this.testModuleService.currentAnswers.subscribe(res =>{
         var result = {
-          id: localStorage.getItem('token'),
+          id: Number(localStorage.getItem('token')),
           timed: this.datePipe.transform(time, 'mm:ss'),
           listAnswer: res
         }
-        this.testService.sendAnswers(result).subscribe(res =>{
-          this.testModuleService.updateResult(res)
-        })
+        this.loadResult(result)
+
       })
     }
   }
 
+  loadResult(rs: any){
+    this.testService.sendAnswers(rs).subscribe(res =>{
+      this.isSpinning = true
+      let dataRes = res as {
+        data:{ numCorrect: number, numrank: number, scores: string, time: string }
+      }
+      this.result = dataRes.data
+      setTimeout(() => {
+        this.hasResult = true
+        this.isSpinning = false
+      }, 3000);
+    })
+  }
+
   finishFunction(){
     this.countdown.pause()
-    // this.testModuleService.currentAnswers.subscribe(res =>{
-    //   console.log(res);
-    // })
   }
 
   nextbackBtnFunction(right: boolean){

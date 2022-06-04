@@ -1,22 +1,28 @@
-<div class="h-100 d-flex flex-column justify-content-center" *ngIf="processBar">
+<div class="h-100 d-flex flex-column justify-content-center" *ngIf="processBar && !hasResult">
   <p-progressBar mode="indeterminate" [style]="{'height': '10px', 'margin': '0 100px'}"></p-progressBar>
 </div>
-<div class="h-100" *ngIf="!processBar">
-  <p-tabMenu [model]="tabs" [scrollable]="true" [activeItem]="activeTab"></p-tabMenu>
-  <div class="question-container">
-    <div class="time">
-      <countdown #cd [config]="countdownConfig" (event)="onCountDownEvent($event)"></countdown>
-      <button class="btn btn-outline-light" (click)="finishFunction()">Finish</button>
+<nz-spin [nzSpinning]="isSpinning" nzTip="Loading result..." *ngIf="!processBar && !hasResult">
+  <div class="h-100">
+    <p-tabMenu [model]="tabs" [scrollable]="true" [activeItem]="activeTab"></p-tabMenu>
+    <div class="question-container">
+      <div class="time">
+        <countdown #cd [config]="countdownConfig" (event)="onCountDownEvent($event)"></countdown>
+        <button class="btn btn-outline-light" (click)="finishFunction()">Finish</button>
+      </div>
+      <div class="next-back-btn">
+        <button pButton pRipple type="button" icon="pi pi-caret-left" title="Previous Quiz"
+          class="p-button-rounded p-button-outlined" [disabled]="tabIndex == 1" (click)="nextbackBtnFunction(false)">
+        </button>
+        <button pButton pRipple type="button" icon="pi pi-caret-right" title="Next Quiz"
+          class="p-button-rounded p-button-outlined" [disabled]="tabIndex == 30" (click)="nextbackBtnFunction(true)">
+        </button>
+      </div>
+      <router-outlet></router-outlet>
     </div>
-    <div class="next-back-btn">
-      <button pButton pRipple type="button" icon="pi pi-caret-left" title="Previous Quiz"
-        class="p-button-rounded p-button-outlined" [disabled]="tabIndex == 1" (click)="nextbackBtnFunction(false)">
-      </button>
-      <button pButton pRipple type="button" icon="pi pi-caret-right" title="Next Quiz"
-        class="p-button-rounded p-button-outlined" [disabled]="tabIndex == 30" (click)="nextbackBtnFunction(true)">
-      </button>
-    </div>
-    <router-outlet></router-outlet>
   </div>
+</nz-spin>
+
+<div class="h-100" *ngIf="hasResult && !isSpinning">
+  <app-test-result [result]="result"></app-test-result>
 </div>
 
