@@ -1,6 +1,7 @@
 package com.english_test.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<UserModel> getListUser() {
 		return userRepository.findAll();
+	}
+	
+	@Override
+	public Optional<UserModel> getUserById(Long id) {
+		return userRepository.findById(id);
 	}
 	
 	@Override
