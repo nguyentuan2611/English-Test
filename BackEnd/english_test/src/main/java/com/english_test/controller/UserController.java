@@ -39,10 +39,11 @@ public class UserController {
 					userLogin.getUserName() ,
 					userLogin.getPassword() , 
 					userLogin.getFullName());
-			
+			res.setResCode("SUCCESS");
 			res.setMessage("Login success!");				
 		}
 		else {
+			res.setResCode("FAIL");
 			res.setMessage("UserName or Password is incorrect!");	
 		}
 		return res;
