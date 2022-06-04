@@ -1,18 +1,18 @@
-.container{
+.infoUser-container{
   background: #fff;
   margin: 0 3%;
   padding: 20px;
+  border: solid 4px #59b2ed;
   border-radius: 5px;
   height: calc(100vh - 137px);
   max-height: 608px;
   min-height: 360px;
   min-width: 1024px;
-  display: flex;
-  justify-content: space-around;
-}
-nz-tabset{
-  width: 100%;
-  form{
-    width: 50%;
+  nz-tabset{
+    width: 100%;
+    form{
+      width: 50%;
+    }
   }
 }
+

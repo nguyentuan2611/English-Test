@@ -16,8 +16,8 @@ const routes: Routes = [
         { path: '', component: HomeComponent },
         { path: 'login', component: DangNhapComponent,},
         { path: 'register', component: DangkyComponent,},
+        { path: 'infoUser', component: InfoUserComponent, canActivate: [AuthGuard]},
         { path: 'test', loadChildren: () => import('./test/test.module').then(m => m.TestModule), canActivate: [AuthGuard] },
-        { path: 'infoUser', component: InfoUserComponent ,}
     ]
   }
 ];

@@ -33,9 +33,6 @@ export class LayoutComponent implements OnInit {
     localStorage.removeItem('token')
     this.router.url === '/' ? this.router.navigate(['/login']) : this.router.navigate(['/'])
   }
-  infoUser(){
-    this.router.url === '/' ? this.router.navigate(['/infoUser']) : this.router.navigate(['/'])
-  }
 
   checkLogin(){
     const token = localStorage.getItem('token')

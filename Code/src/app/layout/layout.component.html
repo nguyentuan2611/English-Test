@@ -17,7 +17,7 @@
       </div>
     </ng-template>
     <ng-template #logged>
-      <div class="login-link btn btn-link"  (click)="infoUser()" >
+      <div class="login-link btn btn-link" [routerLink]="['/infoUser']" >
         <span class="">Hello, {{fullname}}</span>
       </div>
       <span class="mx-2 text-primary">|</span>
@@ -26,7 +26,7 @@
       </div>
     </ng-template>
   </p-menubar>
-  <div class="content">
+  <div class="layout-content">
     <router-outlet (activate)="checkLogin()"></router-outlet>
   </div>
 </div>

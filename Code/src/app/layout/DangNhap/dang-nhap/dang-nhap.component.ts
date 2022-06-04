@@ -57,7 +57,7 @@ export class DangNhapComponent implements OnInit {
         setTimeout(() => {
           this.route.navigate(['/test'])
           this.isSpinning = false
-        }, 3000);
+        }, 2000);
       }
       else{
         this.loginSuccess = true;
