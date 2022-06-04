@@ -36,13 +36,18 @@ export class DangNhapComponent implements OnInit {
         data:{
           id:string,
           userName: string,
-          fullName: string
+          fullName: string,
+          password: string,
+          email: string
         }
       }
 
       if(dataRes.resCode == "SUCCESS"){
         localStorage.setItem('token', dataRes.data.id)
-      localStorage.setItem('fullname', dataRes.data.fullName)
+        localStorage.setItem('fullname', dataRes.data.fullName)
+        localStorage.setItem('userName', dataRes.data.userName)
+        localStorage.setItem('password', dataRes.data.password)
+        localStorage.setItem('email', dataRes.data.email)
 
       this.loginEvent.emit(dataRes.data.fullName);
 
