@@ -70,6 +70,7 @@ export class TestProcessComponent implements OnInit {
     var time: Date = new Date(0,0,0,0,0,0,(15*60*1000 - e.left))
 
     if(e.action == 'done'){
+      this.isSpinning = true
       var sendAPI: boolean = false
       this.testModuleService.getAnswers().subscribe(res => {
         if(sendAPI) return
@@ -83,6 +84,7 @@ export class TestProcessComponent implements OnInit {
       })
       this.testModuleService.updateAnswers({})
     }else if(e.action == 'stop'){
+      this.isSpinning = true
       var sendAPI: boolean = false
       this.testModuleService.getAnswers().subscribe(res => {
         if(sendAPI) return
