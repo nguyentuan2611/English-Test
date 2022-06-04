@@ -20,8 +20,11 @@ export class DangkyComponent implements OnInit {
     "email": ["",[Validators.required, Validators.email]],
     "password": ["",[Validators.required, Validators.minLength(6)]],
   })
+  isBoolean :boolean;
 
-  constructor(private signUpService: SignUpService , private router: Router, private fb:FormBuilder) { }
+  constructor(private signUpService: SignUpService , private router: Router, private fb:FormBuilder) {
+    this.isBoolean = true;
+  }
 
   ngOnInit(): void {
   }
@@ -45,7 +48,7 @@ export class DangkyComponent implements OnInit {
         this.router.navigate(['/login']);
       }
       else if(dataRes.resCode == 'D001'){
-        alert(dataRes.message);
+        this.isBoolean = false;
       }
 
     },err => console.log(err));

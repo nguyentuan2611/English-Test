@@ -85,17 +85,17 @@ public class AnswerController {
 		bxh.setId(answerUser.getId());
 		bxh.setScore(scores);
 		////check User exist in BXH 
-		Boolean check = false;
+		Boolean check = true;
 		if(bxhService.checkUserExists(answerUser.getId()) != null) {
 			float oldScores = bxhService.checkUserExists(answerUser.getId()).getScore();
 			Time oldTimed = bxhService.checkUserExists(answerUser.getId()).getTimed();
 			//compare old scores  vs new scores
-			if( scores > oldScores) {
-				check = true;
+			if( scores < oldScores) {
+				check = false;
 			}
 			else if(scores == oldScores){
-				if(bxh.getTimed().before(oldTimed)) {
-					check = true;
+				if(bxh.getTimed().after(oldTimed)) {
+					check = false;
 				}
 			}
 			//compare old time vs new time
@@ -105,7 +105,6 @@ public class AnswerController {
 		obj.setNumRank(0);
 		if(check) {
 			bxhService.save(bxh);
-			
 			obj.setNumRank(bxhService.getPositionById(answerUser.getId()));
 		}
 		

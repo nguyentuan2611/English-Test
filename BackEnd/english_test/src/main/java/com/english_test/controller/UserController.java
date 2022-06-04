@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.english_exam.common.CommonRes;
@@ -39,10 +40,11 @@ public class UserController {
 					userLogin.getUserName() ,
 					userLogin.getPassword() , 
 					userLogin.getFullName());
-			
+			res.setResCode("SUCCESS");
 			res.setMessage("Login success!");				
 		}
 		else {
+			res.setResCode("FAIL");
 			res.setMessage("UserName or Password is incorrect!");	
 		}
 		return res;
@@ -55,7 +57,22 @@ public class UserController {
 		res.setMessage("Get list user success!");	
 		
 		return res;
-	}
+	}	
+	
+	@PostMapping("/getUserById")
+	public CommonRes getUserById(@RequestParam Long id){
+		CommonRes res = new CommonRes();
+		if(userService.getUserById(id) != null) {
+			res.setData(userService.getUserById(id));
+			res.setMessage("Get user success !");
+			res.setResCode("SUCCESS");
+		}
+		else {
+			res.setMessage(" User is null !");
+			res.setResCode("FAIL");
+		}
+		return res;
+	}	
 	
 	@PostMapping("/register")
 	public CommonRes Register(@RequestBody UserLogin userLogin) {
