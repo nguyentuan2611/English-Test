@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // ant-lib
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { NzSpinModule } from 'ng-zorro-antd/spin';
 
 // prime-lib
 import { MenubarModule } from 'primeng/menubar';
@@ -42,7 +43,8 @@ import { AuthGuard } from '../auth/auth.guard';
     FieldsetModule,
     ScrollPanelModule,
     DividerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NzSpinModule
   ],
   providers: [AuthGuard, DatePipe]
 })

@@ -20,16 +20,18 @@ export class DangkyComponent implements OnInit {
     "email": ["",[Validators.required, Validators.email]],
     "password": ["",[Validators.required, Validators.minLength(6)]],
   })
-  isBoolean :boolean;
+  isSpinning = false
+  signUpErr = '';
 
-  constructor(private signUpService: SignUpService , private router: Router, private fb:FormBuilder) {
-    this.isBoolean = true;
-  }
+  constructor(private signUpService: SignUpService,
+              private router: Router,
+              private fb:FormBuilder) {}
 
   ngOnInit(): void {
   }
 
   signUp(){
+    this.isSpinning = true
 
     this.inforUser.value;
     this.signUpService.signUp(this.inforUser.value).subscribe(res => {
@@ -44,13 +46,18 @@ export class DangkyComponent implements OnInit {
 
 
       if(dataRes.resCode == 'S001'){
-        alert(dataRes.message);
-        this.router.navigate(['/login']);
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+          this.isSpinning = false;
+        }, 2000);
       }
       else if(dataRes.resCode == 'D001'){
-        this.isBoolean = false;
+        setTimeout(() => {
+          this.signUpErr = dataRes.message;
+          this.isSpinning = false;
+        }, 2000);
       }
 
-    },err => console.log(err));
+    });
   }
 }

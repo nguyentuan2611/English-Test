@@ -1,14 +1,12 @@
 
-  <div class="content-wrapper">
+<div class="content-wrapper">
     <div class="content">
+      <nz-spin [nzSpinning]="isSpinning">
         <div class="signup-wrapper shadow-box">
+
             <div class="company-details ">
                 <div class="shadow"></div>
                 <div class="wrapper-1">
-                    <div class="logo">
-                    <div class="icon-logo">
-                </div>
-                </div>
                     <h1 class="title">English</h1>
                     <div class="slogan">How to learn good?</div>
                 </div>
@@ -35,15 +33,17 @@
                                   <small class="form-text">Please Enter PassWord</small>
                                 </div>
                             </div>
-                            <div class="alert alert-danger message" role="alert" *ngIf="isBoolean == false">
+                            <div class="alert alert-danger message" role="alert" *ngIf="loginSuccess">
                               User name or password is invalid!
                             </div>
-                            <button type="submit" (click)="login()"  class="signup">Login</button>
+                            <button type="button" (click)="login()" [disabled]="!inforUser.valid" class="btn btn-primary signup">Login</button>
                         </form>
                     </div>
                 </div>
             </div>
+
         </div>
+      </nz-spin>
     </div>
 </div>
 

@@ -1,6 +1,7 @@
 
   <div class="content-wrapper">
     <div class="content">
+      <nz-spin [nzSpinning]="isSpinning">
         <div class="signup-wrapper shadow-box">
           <div class="signup-form ">
             <div class="wrapper-2">
@@ -42,10 +43,10 @@
                               <small class="form-text">PassWord Invalid</small>
                           </div>
                         </div>
-                        <div class="alert alert-danger message" role="alert" *ngIf="isBoolean == false">
-                          User name has exists!
+                        <div class="alert alert-danger message" role="alert" *ngIf="signUpErr">
+                          {{signUpErr}}!!
                         </div>
-                        <button type="button" (click)="signUp()" class="signup">Sign Up</button>
+                        <button type="button" (click)="signUp()" [disabled]="!inforUser.valid" class="btn btn-primary signup">Sign Up</button>
                     </form>
                 </div>
             </div>
@@ -62,6 +63,7 @@
                 </div>
             </div>
         </div>
+      </nz-spin>
     </div>
 </div>
 

@@ -1,5 +1,7 @@
 
 .content{
+  display: flex;
+  justify-content: center;
   width: 1280px;
   max-width: 100%;
   margin: 0 auto;
@@ -18,13 +20,12 @@
 .signup-wrapper .company-details {
   background: url(https://images.pexels.com/photos/256417/pexels-photo-256417.jpeg?cs=srgb&dl=pexels-pixabay-256417.jpg&fm=jpg);
   background-size: cover;
-position:relative;
-
-
+  position:relative;
 }
+
 .signup-wrapper .company-details:before {
   content: "";
-position: absolute;
+  position: absolute;
   display: block;
   left: 0;
   right: 0;
@@ -96,17 +97,13 @@ position: absolute;
   text-align: center;
   width: 100%;
 }
+
 .signup-wrapper .signup-form .signup {
-  background-color: #0984e3;
-  border: none;
-  color: white;
-  padding: 15px 25px;
   font-size: 1em;
   text-transform: capitalize;
   margin-top: 49px;
-  border-radius: 5px;
-
 }
+
 .signup-wrapper .signup-form .login{
   color: #0984e3;
   padding: 20px;
@@ -167,7 +164,8 @@ input::placeholder {
       width: 50%;
   }
   .signup-wrapper {
-     display: flex;
+      display: flex;
+      width: 700px;
       max-width: 700px;
       margin: 0 auto;
   }

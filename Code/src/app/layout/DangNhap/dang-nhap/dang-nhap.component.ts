@@ -18,16 +18,19 @@ export class DangNhapComponent implements OnInit {
     "userName": ["",[Validators.required]],
     "password": ["",[Validators.required, Validators.minLength(6)]]
   })
-  isBoolean ;
 
-  constructor(private loginService: LoginService, private route: Router,  private fb:FormBuilder) {
-    this.isBoolean = true;
-  }
+  isSpinning = false;
+  loginSuccess = false;
+
+  constructor(private loginService: LoginService,
+              private route: Router,
+              private fb:FormBuilder) {}
 
   ngOnInit(): void {
   }
 
   public login(){
+    this.isSpinning = true
 
     this.loginService.login(this.inforUser.value).subscribe(res => {
       let dataRes = res as {
@@ -42,21 +45,25 @@ export class DangNhapComponent implements OnInit {
         }
       }
 
-      if(dataRes.resCode == "SUCCESS"){
+      if(dataRes.message == "Login success!"){
         localStorage.setItem('token', dataRes.data.id)
         localStorage.setItem('fullname', dataRes.data.fullName)
         localStorage.setItem('userName', dataRes.data.userName)
         localStorage.setItem('password', dataRes.data.password)
         localStorage.setItem('email', dataRes.data.email)
 
-      this.loginEvent.emit(dataRes.data.fullName);
+        this.loginEvent.emit(dataRes.data.fullName);
 
-      this.route.navigate(['/test'])
+        setTimeout(() => {
+          this.route.navigate(['/test'])
+          this.isSpinning = false
+        }, 3000);
       }
       else{
-        this.isBoolean = false;
+        this.loginSuccess = true;
+        this.isSpinning = false;
       }
 
-    },err => console.log(err));
+    });
   }
 }
