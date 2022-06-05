@@ -10,8 +10,17 @@
   min-width: 1024px;
   nz-tabset{
     width: 100%;
-    form{
+    .info-tab{
       width: 50%;
+    }
+    .history-tab{
+      ul{
+        list-style: none;
+        li{
+          width: 50%;
+          }
+      }
+      overflow-y: scroll;
     }
   }
 }

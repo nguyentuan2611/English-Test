@@ -1,13 +1,36 @@
 <div class="infoUser-container">
   <nz-tabset>
     <nz-tab nzTitle="Info">
-
+      <div class="info-tab">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input disabled type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{user.email}}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Full Name</label>
+          <input disabled type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{user.fullName}}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">User Name</label>
+          <input disabled type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{user.userName}}">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input disabled type="password" class="form-control" id="exampleInputPassword1" value="{{user.password}}">
+        </div>
+      </div>
     </nz-tab>
 
 
     <nz-tab nzTitle="Test History">
       <div class="history-tab">
-
+        <ul>
+          <li *ngFor="let item of result ;  index as i">
+              <label >DateTime:  {{item.date_test}}</label>
+              <label style=" margin: 0 10px">Score: {{item.scores}}</label>
+              <label style=" margin: 0 10px">Time: {{item.time}}</label>
+          </li>
+        </ul>
       </div>
     </nz-tab>
   </nz-tabset>
