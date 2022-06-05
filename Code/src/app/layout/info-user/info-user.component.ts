@@ -28,6 +28,8 @@ export class InfoUserComponent implements OnInit {
         }]
       }
       this.result = dataRes.data
+      console.log(this.result);
+
      });
 
      this.loginService.getUserById(this.id).subscribe(res => {
@@ -43,7 +45,6 @@ export class InfoUserComponent implements OnInit {
         }]
       }
       this.user = dataRes.data;
-      console.log(this.user);
 
      })
 
